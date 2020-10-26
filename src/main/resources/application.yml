@@ -1,0 +1,49 @@
+logging:
+  level:
+    cn:
+      licoy:
+        wdog: debug
+spring:
+  datasource:
+    url: jdbc:mysql://122.51.67.240:9036/biz_appot?useUnicode=yes&characterEncoding=UTF8
+    username: root
+    password: Ds&8&qrzZXxQuJImB&95
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 15
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: false
+  redis:
+    host: 122.51.67.240
+    port: 6399
+    password: yushangcc
+    timeout: 10000
+    pool:
+      max-active: 10
+      min-idle: 3
+      max-idle: 5
+  thymeleaf:
+    cache: false
+  aop:
+    proxy-target-class: true
+    auto: true
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 1024
+  port: 80
+  tomcat:
+    max-threads: 1000
+    min-spare-threads: 300
+resources: # 指定静态资源的路径
+  static-locations: classpath:/static/,classpath:/views/,classpath:/staticc/
+  cache-period: 0
+
