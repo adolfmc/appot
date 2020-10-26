@@ -1,0 +1,50 @@
+<!--<script src="./assistant/js/jquery.js"></script>-->
+<!--微信的JSSDK-->
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
+<script src="./assistant/js/home.js"></script>
+<script src="./assistant/js/tools.js"></script>
+<script>
+
+var timeStamp="\""+getUrlParam('timeStamp')+"\"";
+var package="\"prepay_id="+getUrlParam('package_')+"\"";
+var paySign="\""+getUrlParam('paySign')+"\"";
+var appId="\""+getUrlParam('appId')+"\"";
+var nonceStr="\""+getUrlParam('nonceStr')+"\"";
+
+var json = "{"
+      +"\"timeStamp" +"\":" +timeStamp+","
+      +"\"package" +"\":"  +package+","
+      +"\"paySign" +"\":"+paySign+","
+      +"\"appId" +"\":" +appId+","
+      +"\"signType" +"\":"  +"\"MD5"+"\","
+      +"\"nonceStr" +"\":"+nonceStr
+   +"}"
+;
+
+//坑了很久 json格式
+var jons_ = JSON.parse(json)
+console.log(jons_)
+
+function onBridgeReady(){
+   WeixinJSBridge.invoke(
+      'getBrandWCPayRequest',jons_,
+      function(res){
+         if(res.err_msg == "get_brand_wcpay_request:ok" ){
+         // 使用以上方式判断前端返回,微信团队郑重提示：
+               //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+               window.location.href="http://www.yushangcc.com/static/home.html?whichPage=order_list"
+         }
+   });
+}
+if (typeof WeixinJSBridge == "undefined"){
+   if( document.addEventListener ){
+       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+   }else if (document.attachEvent){
+       document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+   }
+}else{
+   onBridgeReady();
+}
+
+</script>
