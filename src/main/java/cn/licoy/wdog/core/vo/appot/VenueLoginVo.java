@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.vo.appot;import lombok.Data;import java.util.Date;/** * @author mc * @version Fri Sep 25 16:39:55 2020 */@Datapublic class VenueLoginVo{   private String id;   private String venueId;   private String venueName;   private String url;   private String loginName;   private String loginPwd;   private Date createDate;}
