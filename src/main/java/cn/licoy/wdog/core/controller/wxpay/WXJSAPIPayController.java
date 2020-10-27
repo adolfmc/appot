@@ -2,7 +2,10 @@ package cn.licoy.wdog.core.controller.wxpay; /**
  *
  */
 
+import cn.licoy.wdog.common.bean.ResponseCode;
+import cn.licoy.wdog.common.bean.ResponseResult;
 import cn.licoy.wdog.common.controller.AppotBaseController;
+import cn.licoy.wdog.common.util.Encrypt;
 import cn.licoy.wdog.core.entity.appot.Order;
 import cn.licoy.wdog.core.service.appot.OrderService;
 import cn.licoy.wdog.core.service.appot.WechatUserService;
@@ -10,6 +13,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.jfinal.weixin.sdk.utils.IOUtils;
 import com.jfinal.weixin.sdk.utils.JsonUtils;
 import com.jpay.ext.kit.PaymentKit;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -59,7 +67,98 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     final static String GETUSERINFO_URL = "https://api.weixin.qq.com/sns/userinfo";
     public String paternerKey="u7yhlCsbYNAoH957ufvV1aujEou3Nh46";
 
+    /**
+     * 第一步:获取access_token(需要在服务器上 )
+     *
+     * 微信小程序获取accessToken
+     *
+     * @author Mr.Wen
+     * @time 2017年8月28日
+     */
+    public static String getAccessToken(String appid, String appsecret) {
+        String GetPageAccessTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET";
+        String requestUrl = GetPageAccessTokenUrl.replace("APPID", appid).replace("SECRET", appsecret);
+        HttpClient client = null;
+        Map<String, String> result = new HashMap<String, String>();
+        String accessToken = null;
+        try {
+            client = new DefaultHttpClient();
+            HttpGet httpget = new HttpGet(requestUrl);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            String response = client.execute(httpget, responseHandler);
+            JSONObject userInfoJsonObject = JSONObject.parseObject(response);
+            accessToken = String.valueOf(userInfoJsonObject.get("access_token"));
+            System.out.println( "accessToken = "+accessToken);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            client.getConnectionManager().shutdown();
+        }
+        return accessToken;
+    }
 
+    /**
+     * 第二步:获取jsapi_ticket
+     * @author Mr.Wen
+     * @description 获取ticket
+     * @date 2018/3/29
+     */
+
+    public static Map<String, String> JsapiTicket(String accessToken) {
+        String GetPageAccessTokenUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
+        String requestUrl = GetPageAccessTokenUrl.replace("ACCESS_TOKEN", accessToken);
+        HttpClient client = null;
+        Map<String, String> result = new HashMap<String, String>();
+        try {
+            client = new DefaultHttpClient();
+            HttpGet httpget = new HttpGet(requestUrl);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            String response = client.execute(httpget, responseHandler);
+            JSONObject OpenidJSONO = JSONObject.parseObject(response);
+            String errcode = String.valueOf(OpenidJSONO.get("errcode"));
+            String errmsg = String.valueOf(OpenidJSONO.get("errmsg"));
+            String ticket = String.valueOf(OpenidJSONO.get("ticket"));
+            String expires_in = String.valueOf(OpenidJSONO.get("expires_in"));
+            result.put("errcode", errcode);
+            result.put("errmsg", errmsg);
+            result.put("ticket", ticket);
+            result.put("expires_in", expires_in);
+
+            System.out.println( "ticket = "+ticket );
+            System.out.println( "errmsg = "+errmsg );
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            client.getConnectionManager().shutdown();
+        }
+        return result;
+    }
+
+    @RequestMapping("getSignature.do")
+    @ResponseBody
+    public ResponseResult getSignature(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String accessToken = getAccessToken(APPID ,SECRET ) ;
+        Map<String, String> result = JsapiTicket(accessToken) ;
+
+
+//        第三部:用时间戳、随机数、jsapi_ticket和要访问的url按照签名算法拼接字符串
+        String noncestr = WXH5PayController.getRandomString(32);//随机字符串
+        String timestamp = String.valueOf(System.currentTimeMillis() / 1000);//时间戳
+        //4获取url
+        //5、将参数排序并拼接字符串
+        String ticket  = result.get("ticket") ;
+        String url ="http://yushangcc.com/wxpay/createSign.do";
+        String str = "jsapi_ticket="+ticket+"&noncestr="+noncestr+"&timestamp="+timestamp+"&url="+url;
+        //6、将字符串进行sha1加密
+        String signature = Encrypt.shaEncode(str);
+        Map<String,String> map=new HashMap();
+        map.put("timestamp",timestamp);
+        map.put("accessToken",accessToken);
+        map.put("ticket",ticket);
+        map.put("noncestr",noncestr);
+        map.put("signature",signature);
+        return ResponseResult.e(ResponseCode.OK, map);
+    }
 
     @RequestMapping("getWechatUser.do")
     public void getWechatUser(HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap) throws  Exception{
@@ -85,6 +184,9 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         String nickname =  userInfoJsonObject.get("nickname").toString() ;
         response.sendRedirect(base_url+"/static/home.html?headimgurl="+headimgurl+"&openid="+openid+"&nickname="+nickname);
     }
+
+
+
     /**
      * 微信
      * @author chy

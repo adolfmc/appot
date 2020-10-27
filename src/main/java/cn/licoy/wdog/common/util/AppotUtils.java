@@ -64,10 +64,20 @@ public class AppotUtils {
     }
 
     public static void main(String[] args) throws  Exception{
-        String s1 =  DateFormatUtils.format(new Date() ,"YYYY-MM-dd");
-        String s2 = DateFormatUtils.format(DateUtils.addDays(new Date() ,-3) ,"YYYY-MM-dd");
+//        String s1 =  DateFormatUtils.format(new Date() ,"YYYY-MM-dd");
+//        String s2 = DateFormatUtils.format(DateUtils.addDays(new Date() ,-3) ,"YYYY-MM-dd");
+//
+//        System.out.println( DateUtils.parseDate( s2 ,new String[]{"yyyy-MM-dd"}).before(  DateUtils.parseDate( s1 ,new String[]{"yyyy-MM-dd"})   )  );
+//        System.out.println(    );
 
-        System.out.println( DateUtils.parseDate( s2 ,new String[]{"yyyy-MM-dd"}).before(  DateUtils.parseDate( s1 ,new String[]{"yyyy-MM-dd"})   )  );
-        System.out.println(    );
+
+        String c1 = "";
+        String c2 = "";
+
+        if( !( c1==null || c2==null ) ){
+            System.out.println(1111);
+        }else{
+            System.out.println(2222);
+        }
     }
 }
