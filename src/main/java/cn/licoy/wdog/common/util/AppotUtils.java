@@ -1,7 +1,13 @@
 package cn.licoy.wdog.common.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,13 +77,15 @@ public class AppotUtils {
 //        System.out.println(    );
 
 
-        String c1 = "";
-        String c2 = "";
+        HttpGet httpget = new HttpGet("http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=121.534218&y=31.195534");
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        HttpClient client = new DefaultHttpClient();;;
+        String response = client.execute(httpget, responseHandler);
+        JSONObject OpenidJSONO = JSONObject.parseObject(response);
+        String x = OpenidJSONO.get("x").toString();
+        String y = OpenidJSONO.get("y").toString();
 
-        if( !( c1==null || c2==null ) ){
-            System.out.println(1111);
-        }else{
-            System.out.println(2222);
-        }
+        System.out.println(Encrypt.base64Decode(x));
+        System.out.println(Encrypt.base64Decode(y));
     }
 }

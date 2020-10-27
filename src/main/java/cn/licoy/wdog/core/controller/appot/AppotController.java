@@ -31,6 +31,7 @@ public class AppotController extends AppotBaseController {
 
 
     @RequestMapping(value = {"/MP_verify_JhO2WS095phwvOSc.txt"})
+    @ResponseBody
     public String MP_verify_JhO2WS095phwvOSc(HttpServletRequest request, HttpServletResponse response,String datee) throws IOException {
         return "JhO2WS095phwvOSc" ;
     }

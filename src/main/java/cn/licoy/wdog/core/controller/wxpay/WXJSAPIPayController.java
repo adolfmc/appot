@@ -30,8 +30,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 
@@ -134,9 +138,34 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         return result;
     }
 
-    @RequestMapping("getSignature.do")
+
+
+    public static String SHA1(String decript) {
+        try {
+            MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
+            digest.update(decript.getBytes());
+            byte messageDigest[] = digest.digest();
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            // 字节数组转换为 十六进制 数
+            for (int i = 0; i < messageDigest.length; i++) {
+                String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
+                if (shaHex.length() < 2) {
+                    hexString.append(0);
+                }
+                hexString.append(shaHex);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    @RequestMapping("getSignature")
     @ResponseBody
-    public ResponseResult getSignature(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ResponseResult getSignature(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
         String accessToken = getAccessToken(APPID ,SECRET ) ;
         Map<String, String> result = JsapiTicket(accessToken) ;
 
@@ -147,16 +176,23 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         //4获取url
         //5、将参数排序并拼接字符串
         String ticket  = result.get("ticket") ;
-        String url ="http://yushangcc.com/wxpay/createSign.do";
         String str = "jsapi_ticket="+ticket+"&noncestr="+noncestr+"&timestamp="+timestamp+"&url="+url;
         //6、将字符串进行sha1加密
-        String signature = Encrypt.shaEncode(str);
+        String signature =SHA1(str);
         Map<String,String> map=new HashMap();
         map.put("timestamp",timestamp);
         map.put("accessToken",accessToken);
         map.put("ticket",ticket);
-        map.put("noncestr",noncestr);
+        map.put("nonceStr",noncestr);
         map.put("signature",signature);
+
+        System.out.println(str);
+        System.out.println("url = "+url);
+        System.out.println("ticket = "+ticket);
+        System.out.println("timestamp = "+timestamp);
+        System.out.println("accessToken = "+accessToken);
+        System.out.println("nonceStr = "+noncestr);
+        System.out.println("signature = "+signature);
         return ResponseResult.e(ResponseCode.OK, map);
     }
 
