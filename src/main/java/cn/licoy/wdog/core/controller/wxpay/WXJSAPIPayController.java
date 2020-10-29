@@ -292,7 +292,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
             if (postForObject.indexOf("SUCCESS") != -1) {
                 Map<String, String> map = PaymentKit.xmlToMap(postForObject);
                 prepay_id = (String) map.get("prepay_id");
-                order.setStatus("2");
+                order.setStatus("0");
             }else{
                 //支付失败
                 order.setStatus("3");
@@ -355,19 +355,23 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
             System.out.println("***xml:"+xml);
             Map<String, String> notifyMap = PaymentKit.xmlToMap(xml);//将微信发的xml转map
             System.out.println("***notifyMap:"+notifyMap);
+            String nonce_str = notifyMap.get("nonce_str") ;
+            String openid  = notifyMap.get("openid") ;
+            Order order = orderService.getOrderByPay(openid,nonce_str);
+
             if(notifyMap.get("return_code").equals("SUCCESS")){
                 if(notifyMap.get("result_code").equals("SUCCESS")){
                     String ordersSn = notifyMap.get("out_trade_no");//商户订单号
                     String amountpaid = notifyMap.get("total_fee");//实际支付的订单金额:单位 分
                     BigDecimal amountPay = (new BigDecimal(amountpaid).divide(new BigDecimal("100"))).setScale(2);//将分转换成元-实际支付金额:元
                     System.out.println("***notifyUrl.htm data:"+ordersSn+"---"+amountPay);
-
+                    order.setStatus("2");
+                }else{
+                    order.setStatus("3");
                 }
             }
 
-            String nonce_str = notifyMap.get("nonce_str") ;
-            String openid  = notifyMap.get("openid") ;
-            Order order = orderService.getOrderByPay(openid,nonce_str);
+
             order.setPayStatus(notifyMap.get("result_code"));
             order.setPayUpdatetime(new Date());
             order.setPayInfo(notifyMap.get("time_end"));

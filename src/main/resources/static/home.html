@@ -20,6 +20,7 @@
     <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
     <link href="./assistant/css/style.css" rel="stylesheet">
     <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
     <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
 
     <script src="./assistant/js/jquery.js"></script>
@@ -27,7 +28,7 @@
     <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
 
     <script src="./assistant/js/swiper.min.js"></script>
-    <script src="./assistant/js/swipe.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
     <script src="./assistant/js/layer/layer.js"></script>
     <script src="./assistant/js/tools.js?v=Math.random()"></script>
     <script src="./assistant/js/home.js?v=Math.random()"></script>
@@ -195,31 +196,25 @@
 
 <body>
     <div style="height: 100%;">
-
-        <!-- 左侧面菜单 -->
-        <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4"
-            data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
-            <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
-                <div class="avatar">
-                    <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
                 </div>
-                <span class="title fg-white">
-                    Automatic appointment 
-                    <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
-                </span>
-                <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
-            </div>
-            <ul class="sidebar-menu">
-                <li><a onclick="ck_home()"><span class="mif-home icon"></span>
-                        <div style="margin-top: .4rem;">主页</div>
-                    </a></li>
-                <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
-                <li><a onclick="order_list('order_all')"><span class="mif-files-empty icon"></span>历史</a></li>
-                <li class="divider"></li>
-                <li><a><span class="mif-images icon"></span>我的</a></li>
-            </ul>
-        </aside>
-
+                <ul class="sidebar-menu">
+                    <li><a onclick="ck_home()"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a onclick="order_list('order_all')"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
         <!--  内容 START MAIN 面板  -->
         <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
             <!-- 标题 -->
@@ -499,265 +494,7 @@
                             </p>
                         </div>
                     </li>
-                    <li data-href="/court/detail?id=7527&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2015081439519090338632740540.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2015081439519090338632740540.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>乐空间东陆学校羽毛球馆</span></p>
-                            <p>[高行]</p>
-                            <p> <span>￥<em>55</em></span>
-                                <span>￥55</span>
-                                <i data-href="/court/book?bid=7527&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=7529&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150831/2015081441006638492513761225.jpg"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150831/2015081441006638492513761225.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>浦兴中学羽毛球馆</span></p>
-                            <p>[金桥]</p>
-                            <p> <span>￥<em>18</em></span>
-                                <span>￥38</span>
-                                <i data-href="/court/book?bid=7529&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=7537&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2016121480911815702880807242.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2016121480911815702880807242.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>高桥镇小学羽毛球馆</span></p>
-                            <p>[外高桥]</p>
-                            <p> <span>￥<em>40</em></span>
-                                <i data-href="/court/book?bid=7537&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=8206&amp;cid=1">
-                        <div class="preload" data-url="https://img3.qydimg.com/20180105/2018011515149588024655305602.jpg-wm"
-                            style="background-image: url(&quot;https://img3.qydimg.com/20180105/2018011515149588024655305602.jpg-wm&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>曹杨二中羽毛球馆</span></p>
-                            <p>[曹家渡]</p>
-                            <p> <span>￥<em>53</em></span>
-                                <span>￥55</span>
-                                <i data-href="/court/book?bid=8206&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=8729&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20151105/2015111446725991949753221877.jpg"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20151105/2015111446725991949753221877.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>复旦科技园体育中心</span></p>
-                            <p>[曲阳地区]</p>
-                            <p> <span>￥<em>30</em></span>
-                                <span>￥50</span>
-                                <i data-href="/court/book?bid=8729&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=9327&amp;cid=1">
-                        <div class="preload" data-url="http://img1.qydimg.com/gsimages/2015-07-23/1a4b021d299b8d3be108b0f98f1a22ef.jpg"
-                            style="background-image: url(&quot;http://img1.qydimg.com/gsimages/2015-07-23/1a4b021d299b8d3be108b0f98f1a22ef.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>结谊羽毛球馆</span></p>
-                            <p>[莘庄]</p>
-                            <p> <span>￥<em>20</em></span>
-                                <span>￥50</span>
-                                <i data-href="/court/book?bid=9327&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17671&amp;cid=1">
-                        <div class="preload" data-url="http://img1.qydimg.com/gsimages/2015-07-27/14d50d3b4e343bd869a782b9b6a029a8.jpg"
-                            style="background-image: url(&quot;http://img1.qydimg.com/gsimages/2015-07-27/14d50d3b4e343bd869a782b9b6a029a8.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>白玉兰小学三杨校区羽毛球馆</span></p>
-                            <p>[三林地区]</p>
-                            <p> <span>￥<em>43</em></span>
-                                <span>￥45</span>
-                                <i data-href="/court/book?bid=17671&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17672&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2015091442193462318495279930.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2015091442193462318495279930.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>新云台中学羽毛球馆</span></p>
-                            <p>[北蔡]</p>
-                            <p> <span>￥<em>55</em></span>
-                                <span>￥60</span>
-                                <i data-href="/court/book?bid=17672&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17759&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150831/2015081441006618920820969256.jpg"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150831/2015081441006618920820969256.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>上海嘉茗乒羽中心</span></p>
-                            <p>[嘉定镇]</p>
-                            <p> <span>￥<em>25</em></span>
-                                <span>￥40</span>
-                                <i data-href="/court/book?bid=17759&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17787&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2015121449813026150352165430.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2015121449813026150352165430.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>乐空间高行小学羽毛球馆</span></p>
-                            <p>[高行]</p>
-                            <p> <span>￥<em>18</em></span>
-                                <span>￥40</span>
-                                <i data-href="/court/book?bid=17787&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17798&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/3e95df03cae06a31d0565d879b58682b.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/3e95df03cae06a31d0565d879b58682b.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>美兰湖小学羽毛球馆</span></p>
-                            <p>[美兰湖]</p>
-                            <p> <span>￥<em>20</em></span>
-                                <span>￥25</span>
-                                <i data-href="/court/book?bid=17798&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17948&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150917/2015091442477994989220206129.png"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150917/2015091442477994989220206129.png&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>浦卫篮球羽毛球综合馆</span></p>
-                            <p>[金桥]</p>
-                            <p> <span>￥<em>10</em></span>
-                                <span>￥40</span>
-                                <i data-href="/court/book?bid=17948&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17949&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150917/2015091442477977428999954909.jpg"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150917/2015091442477977428999954909.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>晴天羽毛球馆</span></p>
-                            <p>[嘉定镇]</p>
-                            <p> <span>￥<em>40</em></span>
-                                <span>￥80</span>
-                                <i data-href="/court/book?bid=17949&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=17951&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2015081440135651429891002129.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2015081440135651429891002129.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>精羽羽毛球（呼兰馆）</span></p>
-                            <p>[宝山城区]</p>
-                            <p> <span>￥<em>27</em></span>
-                                <span>￥40</span>
-                                <i data-href="/court/book?bid=17951&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=18033&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150917/2015091442477882411629724568.png"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150917/2015091442477882411629724568.png&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>湾流域尚博羽毛球馆（原尚博实验小学羽毛球馆）</span></p>
-                            <p>[三林镇]</p>
-                            <p> <span>￥<em>30</em></span>
-                                <span>￥45</span>
-                                <i data-href="/court/book?bid=18033&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=18050&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2015081440739922944719276485.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2015081440739922944719276485.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>新虹体育活动中心</span></p>
-                            <p>[华漕]</p>
-                            <p> <span>￥<em>19</em></span>
-                                <span>￥40</span>
-                                <i data-href="/court/book?bid=18050&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=18124&amp;cid=1">
-                        <div class="preload"
-                            data-url="https://img3.qydimg.com/uploads/20170118/2016011452017784786033559752.jpg-old8QCqQ"
-                            style="background-image: url(&quot;https://img3.qydimg.com/uploads/20170118/2016011452017784786033559752.jpg-old8QCqQ&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>羽跃羽毛球俱乐部（原羽show）</span></p>
-                            <p>[五角场/大学区]</p>
-                            <p> <span>￥<em>30</em></span>
-                                <span>￥60</span>
-                                <i data-href="/court/book?bid=18124&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
-                    <li data-href="/court/detail?id=18125&amp;cid=1">
-                        <div class="preload" data-url="http://aimage.quyundong.com/uploads/20150917/2015091442477942413174264743.jpg"
-                            style="background-image: url(&quot;http://aimage.quyundong.com/uploads/20150917/2015091442477942413174264743.jpg&quot;);">
-                        </div>
-                        <div>
-                            <p> <span>酋鹿球场·彩虹馆</span></p>
-                            <p>[荣乐中路]</p>
-                            <p> <span>￥<em>18</em></span>
-                                <span>￥50</span>
-                                <i data-href="/court/book?bid=18125&amp;cid=1&amp;t=1602000000">预订</i>
-                
-                            </p>
-                        </div>
-                    </li>
+
                 </ul>
 
 
@@ -770,6 +507,13 @@
     <!-- Metro 4 -->
     <script>
         $(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: true,//可选选项，自动滑动
+                freeMode:true,//滑动不够一格，不会自动贴合
+                slidesPerView:2,//设置slider容器能够同时显示的slides数量
+            })
+
+
             //0 加载场地信息
             get_venue()
 
@@ -847,23 +591,6 @@
             var lag = position.coords.longitude; //经度 
             console.log('纬度:'+lat+',经度:'+lag); 
         } 
-
-        // function showError(error){ 
-        //     switch(error.code) { 
-        //         case error.PERMISSION_DENIED: 
-        //         alert("定位失败,用户拒绝请求地理定位"); 
-        //         break; 
-        //         case error.POSITION_UNAVAILABLE: 
-        //         alert("定位失败,位置信息是不可用"); 
-        //         break; 
-        //         case error.TIMEOUT: 
-        //         alert("定位失败,请求获取用户位置超时"); 
-        //         break; 
-        //         case error.UNKNOWN_ERROR: 
-        //         alert("定位失败,定位系统失效"); 
-        //         break; 
-        //     } 
-        // }
 
 
         function get_venue(){
@@ -1310,7 +1037,6 @@
                 }
             });
         }
-
     </script>
 </body>
 

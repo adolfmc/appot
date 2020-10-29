@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.mapper.appot;import cn.licoy.wdog.core.entity.appot.VenueFee;import com.baomidou.mybatisplus.mapper.BaseMapper;import org.apache.ibatis.annotations.Mapper;import org.springframework.stereotype.Repository;/** * @author mc * @version Thu Oct 29 16:26:42 2020 */@Mapper@Repositorypublic interface VenueFeeMapper extends BaseMapper<VenueFee> {}

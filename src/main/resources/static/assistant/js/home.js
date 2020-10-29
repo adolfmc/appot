@@ -1,5 +1,5 @@
 var base_url="http://www.yushangcc.com" ;
-// var base_url="http://127.0.0.1" ;
+var base_url="http://127.0.0.1" ;
 
 var storage=window.localStorage;
 
@@ -46,6 +46,11 @@ function create_calendar1(result,which_){
                 _css_datee='opacity: 0.2';
                 _css_a ="style='pointer-events:none'; " ;
                 _css_td_today = '';
+
+                //判断 日历正行是否是当月 且生效日期，如果整行都不是当月日期，则直接退出循环
+                // if(  Number(info_[i][j][1].split('-')[2])>=1  && Number(info_[i][j][1].split('-')[2])<=14  ){
+                //     continue;
+                // }
             } 
             
             //设置当天日期
@@ -64,6 +69,9 @@ function create_calendar1(result,which_){
                     +"<p style='"+_css_tag+"'>充足</p>"
                 +"</a> "
             +"</td> "
+
+            
+
         }
         tr_ = tr_ +"<tr>"+tdd+"</tr>"
     }

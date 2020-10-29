@@ -1,6 +1,8 @@
 package cn.licoy.wdog.common.util;
 
+import cn.licoy.wdog.core.vo.appot.json.Body;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.toolkit.ReflectionKit;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.http.client.HttpClient;
@@ -9,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,7 +72,12 @@ public class AppotUtils {
         return UUID.randomUUID().toString().replace("-","");
     }
 
+
     public static void main(String[] args) throws  Exception{
+        Body b = new Body();
+        b.setStime("ccccccccccc");
+        System.out.println(ReflectionKit.getMethodValue( b,"stime"));
+//        System.out.println( getWeek ( new Date()));
 //        String s1 =  DateFormatUtils.format(new Date() ,"YYYY-MM-dd");
 //        String s2 = DateFormatUtils.format(DateUtils.addDays(new Date() ,-3) ,"YYYY-MM-dd");
 //
@@ -77,15 +85,15 @@ public class AppotUtils {
 //        System.out.println(    );
 
 
-        HttpGet httpget = new HttpGet("http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=121.534218&y=31.195534");
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        HttpClient client = new DefaultHttpClient();;;
-        String response = client.execute(httpget, responseHandler);
-        JSONObject OpenidJSONO = JSONObject.parseObject(response);
-        String x = OpenidJSONO.get("x").toString();
-        String y = OpenidJSONO.get("y").toString();
-
-        System.out.println(Encrypt.base64Decode(x));
-        System.out.println(Encrypt.base64Decode(y));
+//        HttpGet httpget = new HttpGet("http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=121.534218&y=31.195534");
+//        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+//        HttpClient client = new DefaultHttpClient();;;
+//        String response = client.execute(httpget, responseHandler);
+//        JSONObject OpenidJSONO = JSONObject.parseObject(response);
+//        String x = OpenidJSONO.get("x").toString();
+//        String y = OpenidJSONO.get("y").toString();
+//
+//        System.out.println(Encrypt.base64Decode(x));
+//        System.out.println(Encrypt.base64Decode(y));
     }
 }
