@@ -16,18 +16,12 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.12.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
-
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <remote-addr>192.168.1.96:22</remote-addr>
-        <remote-username>root</remote-username>
-        <remote-passwd>zhongjiL1!</remote-passwd>
-        <remote-name>NACPortal</remote-name>
-
         <!-- 你的其他依赖。。。 -->
     </properties>
 
@@ -285,6 +279,8 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <serverId>appot_server</serverId>
                     <fromFile>target/appot_auto-0.1.2.jar</fromFile>
                     <url>scp://122.51.67.240:/opt/data/appot_server</url>
@@ -304,6 +300,15 @@
                     <!-- 如果没有该项配置，devtools不会起作用，即应用不会restart -->
                     <fork>true</fork>
                     <addResources>true</addResources>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
