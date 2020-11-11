@@ -34,6 +34,16 @@ spring:
   jackson:
     date-format: yyyy-MM-dd
     time-zone: GMT+8
+  #给项目来个名字
+  application:
+    name: appotmq
+  #配置rabbitMq 服务器
+  rabbitmq:
+    host: 122.51.67.240
+    port: 5682
+    username: admin
+    password: appot2020
+
 server:
   compression:
     enabled: true

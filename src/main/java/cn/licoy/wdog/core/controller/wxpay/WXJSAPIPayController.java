@@ -18,6 +18,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -52,7 +55,8 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     private WechatUserService wechatUserService;
     @Autowired
     private OrderService orderService;
-
+    @Autowired
+    RabbitTemplate rabbitTemplate;  //使用RabbitTemplate,这提供了接收/发送等等方法
 
     final static String APPID = "wx98188fbf500bdf33";
     // 公众号秘钥
@@ -366,6 +370,9 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
                     BigDecimal amountPay = (new BigDecimal(amountpaid).divide(new BigDecimal("100"))).setScale(2);//将分转换成元-实际支付金额:元
                     System.out.println("***notifyUrl.htm data:"+ordersSn+"---"+amountPay);
                     order.setStatus("2");
+
+                    //添加任务队列
+                    sendDirectMessage(order.getId()) ;
                 }else{
                     order.setStatus("3");
                 }
@@ -444,4 +451,19 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         }
         return ip;
     }
+
+
+    public void sendDirectMessage(String orderId) {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "test message, hello!";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String,Object> map=new HashMap<>();
+        map.put("orderId",orderId);
+        map.put("messageData",messageData);
+        map.put("createTime",createTime);
+
+        //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
+        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", JSONObject.toJSONString(JSONObject.toJSON(map)));
+    }
+
 }
