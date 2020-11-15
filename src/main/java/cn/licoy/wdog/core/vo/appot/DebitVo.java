@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.vo.appot;import lombok.Data;import java.util.Date;/** * @author mc * @version Sat Nov 07 22:21:58 2020 */@Datapublic class DebitVo{   private String id;   private String datee;   private String cash;   private String creditcard;   private String allDebit;}

@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.mapper.appot;import cn.licoy.wdog.core.entity.appot.Debit;import com.baomidou.mybatisplus.mapper.BaseMapper;import org.apache.ibatis.annotations.Mapper;import org.springframework.stereotype.Repository;/** * @author mc * @version Sat Nov 07 19:53:37 2020 */@Mapper@Repositorypublic interface DebitMapper extends BaseMapper<Debit> {}

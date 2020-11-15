@@ -1,0 +1,224 @@
+
+
+
+
+
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div class="spinner" id="spinnerid" style="display: none;">
+    <div>
+        <p class="bounce1"></p>
+        <p class="bounce2"></p>
+        <p class="bounce3"></p>
+    </div>
+</div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ <meta charset="UTF-8">
+    <title></title>
+    <meta charset="UTF-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-title" content="动网"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="keywords" content="运动场地预订,运动场地在线预约,北京动网"/>
+    <meta name="description" content="动网,国内专业的体育场馆在线预订平台，
+       为您提供全国数十万家体育场馆预订，运动场地预定以及户外运动信息.羽毛球
+       场地预订，台球馆预订，游泳票预订和羽毛球培训，网球培训等体育运动信息。"/>
+    <!-- UC全屏、应用模式 -->
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <!-- QQ全屏、应用模式 -->
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+    <script src="/assistant/js/jquery.js"></script>
+    <link href="/assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="/assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <script src="/assistant/js/jquery.excoloSlider.js"></script>
+    <link href="/assistant/css/jquery.excoloSlider.css" rel="stylesheet" />
+    <link href="/assistant/css/swiper.min.css" rel="stylesheet" />
+    <link href="/assistant/css/style.css" rel="stylesheet" />
+    <script src="/assistant/js/swiper.min.js"></script>
+    <script src="/assistant/js/swipe.js"></script>
+    <script src="/assistant/js/layer/layer.js"></script>
+
+</head>
+<body>
+<div id="wapper" class="wapper">
+    <header class="page-header clearfix" id="mainPage">
+        <a href="javascript:void(0);" onclick="window.history.back()"  class="back"></a>
+        <h2>提交订单</h2>
+    </header>
+    <div>
+        <div class="order_name_site">
+            <span>场馆</span>
+            <input type="hidden" name="venueName" id="venueName" value="" />
+            <input type="hidden" name="userName" id="userName" value="" />
+            <input type="hidden" name="venueId" id="venueId" value="297881" />
+            <input type="hidden" name="sportType" id="sportType" value="0L20" />
+            <input type="hidden" name="time"  id="time" value="2020-11-11">
+            <input type="hidden" name="siteId" id="siteId" value="288322" />
+            <input type="hidden" name="productId" id="productId" value="" />
+            <input type="hidden" name="isHalf" id="isHalf" value="0"/>
+            
+            <div class="order_venue">DC羽毛球馆(YONEX徐泾馆）</div>
+        </div>
+        <div class="order_name_site">
+            <span>预订场次</span>
+            <ul>
+            
+                <li>
+                    11月11日     
+                    
+                     12:00 -  13:00 
+                    <div class="order_venue">55元</div>
+                    <input type="hidden" name="stime" value=" 12:00">
+	           	    <input type="hidden" name="etime" value=" 13:00">
+	           	 	<input type="hidden" name="price" value="55">
+                    <input type="hidden" name="siteName" value="">
+                    <input type="hidden" name="salePrice"  value="55">
+                </li>
+                
+             
+             
+              		<input type="hidden" name="siteNo" value="5289">
+             
+            </ul>
+        </div>
+      
+        <div class="order_Fill">
+            <div class="order_name_site">
+                <span>手机号</span>
+                <div class="order_venue"><input type="tel" name="tel" id="tel" value="15021008580" class="mob_Input" placeholder="请输入手机号"/></div>
+            </div>
+        </div>
+        <div class="pay_Btn marTop30">
+            <a href="javascript:void(0);" onclick="toOrderPay()" class="toDo_sub">提交订单</a>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+    $(function(){
+        checkOrder();
+    });
+    function checkOrder(){
+        var siteNo=new  Array();
+        var venueId=$("#venueId").val();
+        var siteId=$("#siteId").val();
+        var time=$("#time").val();
+        $.ajax({
+            type : "post",
+            data :{"venueId":venueId,"time":time,"siteId":siteId},
+            dataType : "json",
+            url : "/app/order/checkHaveOrder.action",
+            success : function (json) {
+                if(json.code==2){//有訂單
+                    layer.confirm('您已有'+time+'未支付的本场馆的订单，请点击确认支付？', {
+                        btn: ['确认','取消'] //按钮
+                    }, function(){
+                        location.href="/app/order/myorder.action";
+                    }, function(){
+                        layer.closeAll();
+                    });
+
+                }
+
+            }
+        });
+
+    }
+    function toOrderPay(){
+        var myreg = /^1[0-9]{10}$/;
+        var siteNo=new  Array();
+        var venueId=$("#venueId").val();
+        var userName=$("#userName").val();
+        var venueName=$("#venueName").val();
+        var sportType=$("#sportType").val();
+        var tel=$("#tel").val();
+        var siteId=$("#siteId").val();
+        var time=$("#time").val();
+        var couponId=$("#couponId").val();
+        var isHalf=$("#isHalf").val();
+        
+        if(tel==null||tel==""){
+            layer.msg('手机号不能为空');
+            return;
+        }else{
+            if(!myreg.test(tel))
+            {
+                layer.msg('请输入有效的手机号码！');
+                return;
+            }
+        }
+        var time=$("#time").val();
+        $("input[name='siteNo']").each(function(){
+            var siteno=$(this).val();
+            if(siteno != undefined || siteno == ''){
+                siteNo.push(siteno);
+            }
+        });
+
+        var stime=new  Array();
+        $("input[name='stime']").each(function(){
+            var stime1=$(this).val();
+            if(stime1 != undefined || stime1 == ''){
+                stime.push(stime1);
+            }
+        });
+        var etime=new  Array();
+        $("input[name='etime']").each(function(){
+            var etime1=$(this).val();
+            if(etime1 != undefined || etime1 == ''){
+                etime.push(etime1);
+            }
+        });
+        var price=new  Array();
+        $("input[name='price']").each(function(){
+            var peice1=$(this).val();
+            if(peice1 != undefined || peice1 == ''){
+                price.push(peice1);
+                flag=true;
+            }
+        });
+        $.ajax({
+            type : "post",
+            data :{"siteNo":siteNo.join(','),"stime":stime.join(','),
+                "etime":etime.join(','),"userName":userName,
+                "venueName":venueName,"venueId":venueId,"sportType":sportType,
+                "time":time,"tel":tel,"siteId":siteId,"isHalf":isHalf},
+            dataType : "json",
+            url : "/app/order/bookSite.action",
+            beforeSend:function() {
+                $(".spinner").show();
+
+            },
+
+            success : function (json) {
+                document.getElementById("spinnerid").style.display="none"
+                if(json.code==0){
+                    layer.msg(json.msg);
+                }else{
+                    var body=json.body;
+                    window.location="/app/order/pay.action?orderId="+body+"&venueId="+venueId;
+                }
+
+            }
+        });
+
+    }
+
+   
+</script>
+</body>
+</html>

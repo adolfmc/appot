@@ -55,8 +55,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     private WechatUserService wechatUserService;
     @Autowired
     private OrderService orderService;
-    @Autowired
-    RabbitTemplate rabbitTemplate;  //使用RabbitTemplate,这提供了接收/发送等等方法
+
 
     final static String APPID = "wx98188fbf500bdf33";
     // 公众号秘钥

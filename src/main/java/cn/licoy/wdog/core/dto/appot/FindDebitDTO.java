@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.dto.appot;import cn.licoy.wdog.core.dto.SplitPageDTO;import lombok.Data;import java.util.Date;/** * @author mc * @version Sat Nov 07 22:21:58 2020 */@Datapublic class FindDebitDTO extends SplitPageDTO  {   private String id;   private String datee;   private String cash;   private String creditcard;   private String allDebit;}

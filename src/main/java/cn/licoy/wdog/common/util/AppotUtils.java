@@ -35,7 +35,7 @@ public class AppotUtils {
     public static ArrayList get40Days(String datee) throws  Exception{
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         ArrayList result = new ArrayList();
-        for(int i=-20;i<=20;i++){
+        for(int i=0;i<=20;i++){
             ArrayList dee = new ArrayList();
 
             Calendar c = Calendar.getInstance();

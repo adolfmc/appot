@@ -92,6 +92,9 @@ public class AppotController extends AppotBaseController {
     @RequestMapping(value = {"/getInfoByDateFromDCYumaoqiu"})
     public void getInfoByDateFromDCYumaoqiu(HttpServletRequest request, HttpServletResponse response,String datee) throws Exception {
         try {
+            if (datee==null){
+                return ;
+            }
             Date pdate = DateUtils.parseDate(datee,"yyyy-MM-dd") ;
             Date _7Days = DateUtils.addDays(new Date() ,7);
             if(pdate.after(_7Days) ){

@@ -41,6 +41,7 @@
     background: #fff;
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
+    height: 400px;
 }
 
 .web2-list .web2-list-title {
@@ -237,12 +238,14 @@
             <div id="id_home" style="display:none ">
                 <div id="wapper" class="wapper">
                     <div class="venue_Top">
-                        <div class="venue-Img" id="venueImg">
-                            <img src="https://img.dongsport.com/thumbimg/67/34/e6c04099-c04d-4ab5-b8bf-6c62c113d54a_750xx360.jpg" alt="">
+                        <div class="venue-Img" >
+                            <img id="venueImg2" src="https://img.dongsport.com/thumbimg/67/34/e6c04099-c04d-4ab5-b8bf-6c62c113d54a_750xx360.jpg" alt="">
                         </div>
                         <div class="venue-Name" id="venue-Name">
-                            <input type="text" name="venueId" id="venueId" value="297881" hidden="hidden">
-                            
+                            <input type="hidden" name="venueId" id="venueId" />
+                            <input type="hidden" name="siteId" id="siteId" />
+                            <input type="hidden" name="productId" id="productId" />
+                            <input type="hidden" name="isHalf" id="isHalf" />
                             <div id='venueName_'>CG</div>
                             <div class="startscore">
                                 <div class="star"></div>
@@ -260,8 +263,7 @@
                 <div class="v-contents">
                     <div class="venues_Tab" id="venues_Tab" style="width:100%;">
                         <div style="white-space: nowrap;overflow-x: auto;">
-                            <span onclick="sportType(this,'288322')" id="288322" value="288322" class="cur">羽毛球
-                            </span>
+                            <span onclick="sportType(this,'288322')" id="288322" value="288322" class="cur">羽毛球</span>
                         </div>
                         <div class="move_bar" style="width: 86px; center: 0px;"></div>
                     </div>
@@ -381,6 +383,9 @@
                 <input type="hidden" name="etimes" id="etimes" value="">
                 <input type="hidden" name="prices" id="prices" value="">
                 <input type="hidden" name="siteNames" id="siteNames" value="">
+
+
+                
             </div>
 
 
@@ -515,7 +520,7 @@
 
 
             //0 加载场地信息
-            get_venue()
+            // get_venue()  //更新为由列表加载
 
             //1 加载日历 (首页日历 & 商品页 弹窗日历)
             get_calendar('calendar');
@@ -537,10 +542,10 @@
             getLocation();
 
 
-            // var lng1 = 121.515244;// 经度;
-            // var lat1 = 31.181736;// 维度;
+            var lng1 = 121.515244;// 经度;
+            var lat1 = 31.181736;// 维度;
             //6 加载场馆信息
-            // getVenues(lng1,lat1);
+            getVenues(lng1,lat1);
         });
 
         function getLocation(){ 
@@ -598,6 +603,7 @@
                 success : function(result) {
                     $('#venueName_').html(result.data.venueName);
                     $('#venue_address_').html(result.data.addres).append(' ;tel:').append(result.data.tel);
+                    
                 }
             });
         }
@@ -1002,6 +1008,19 @@
             }
         }
 
+
+        function return_venue(siteId,productId,isHalf,venueName,address,tel,img,venueId){
+            ck_home();
+            $('#venueId').val(venueId);
+            $('#productId').val(productId);
+            $('#isHalf').val(isHalf);
+            $('#siteId').val(siteId);
+               
+            $('#venueImg2').attr('src',decodeURIComponent(img)+'?'+Math.random());
+            $('#venueName_').html(decodeURIComponent(venueName));
+            $('#venue_address_').html( decodeURIComponent(address) ).append(' ;tel:').append(decodeURIComponent(tel) );
+        }
+
         function getVenues(lng1,lat1){
             $.ajax({
                 type : "POST"
@@ -1014,8 +1033,10 @@
                     if(result!=null ){
                         for(var i=0;i<result.length;i++){
                             data = result[i];
+                            
                             div_str = div_str + '<div class="myOrder-venue-infor">';
-                            div_str = div_str + '<li data-href="/court/detail?id=19057&amp;cid=11">';
+                            div_str = div_str + '<li><a href=javascript:return_venue("'+data.siteId+'","'+data.productId+'","'+data.isHalf+'","'+encodeURIComponent(data.venueName)+'","'+encodeURIComponent(data.addres)+'","'+encodeURIComponent(data.tel)+'","'+encodeURIComponent(data.img)+'","'+data.id+'"); style="text-decoration:none;">';
+                            // div_str = div_str + '<li><a href=javascript:return_venue("'+ encodeURIComponent(data.img) +'") ; style="text-decoration:none;">';
                             div_str = div_str + '    <div class="preload"';
                             div_str = div_str + '        data-url="'+data.img+'"';
                             div_str = div_str + '        style="background-image: url(&quot;'+data.img+'&quot;);">';
@@ -1025,10 +1046,10 @@
                             div_str = div_str + '        <p>['+data.area+']  '+distance_show(data)+'</p>';
                             div_str = div_str + '        <p> <span>￥<em>'+data.salesPrice+'</em></span>';
                             div_str = div_str + '            <span>￥'+data.price+'</span>';
-                            div_str = div_str + '            <i data-href="/court/book?bid=19057&amp;cid=11&amp;t=1602000000">预订</i>';
+                            div_str = div_str + '            <i>预订</i>';
                             div_str = div_str + '        </p>';
                             div_str = div_str + '    </div>';
-                            div_str = div_str + '</li>';
+                            div_str = div_str + '</a></li>';
                         }
                     }
                     $('#venus_list_indexid').empty();

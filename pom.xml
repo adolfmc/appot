@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.licoy</groupId>
-    <artifactId>appot_auto</artifactId>
+    <artifactId>appot</artifactId>
     <version>0.1.2</version>
     <packaging>jar</packaging>
 
-    <name>appot_auto</name>
-    <description>appot_auto</description>
+    <name>appot</name>
+    <description>appot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -288,7 +288,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <serverId>appot_server</serverId>
-                    <fromFile>target/appot_auto-0.1.2.jar</fromFile>
+                    <fromFile>target/appot-0.1.2.jar</fromFile>
                     <url>scp://122.51.67.240:/opt/data/appot_server</url>
                     <commands>
                         <command><![CDATA[ sh /opt/data/appot_server/restart_appot.sh]]></command>

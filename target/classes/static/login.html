@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="twitter:site" content="@metroui">
+    <meta name="twitter:creator" content="@pimenov_sergey">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Metro 4 Components Library">
+    <meta name="twitter:description" content="Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins  .">
+    <meta name="twitter:image" content="https://metroui.org.ua/images/m4-logo-social.png">
+
+    <meta property="og:url" content="https://metroui.org.ua/v4/index.html">
+    <meta property="og:title" content="Metro 4 Components Library">
+    <meta property="og:description" content="Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins  .">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://metroui.org.ua/images/m4-logo-social.png">
+    <meta property="og:image:secure_url" content="https://metroui.org.ua/images/m4-logo-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="968">
+    <meta property="og:image:height" content="504">
+
+    <meta name="author" content="Sergey Pimenov">
+    <meta name="description" content="The most popular HTML, CSS, and JS library in Metro style.">
+    <meta name="keywords" content="HTML, CSS, JS, Metro, CSS3, Javascript, HTML5, UI, Library, Web, Development, Framework">
+
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <link href="./v4/css/metro-all.css?ver=@@b-version" rel="stylesheet">
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/home.js?version=Math.random()"></script>
+
+    <title>场地预约SAAS平台</title>
+
+    <style>
+        .login-form {
+            width: 350px;
+            height: auto;
+            top: 35%;
+            margin-top: -160px;
+        }
+    </style>
+</head>
+<body class="h-vh-100 bg-brandColor1" style="background-image:url(./v4/images/login_bg1.jpg);background-repeat: no-repeat;background-size: 100%,100%;">
+    <form class="login-form bg-white p-6 mx-auto border bd-default win-shadow"
+          data-role="validator"
+          action="javascript:"
+          data-clear-invalid="2000"
+          data-on-error-form="invalidForm"
+          data-on-validate-form="validateForm" >
+        <span class="mif-vpn-lock mif-4x place-right" style="margin-top: -10px;"></span>
+        <h2 class="text-center">场馆预约</h2>
+        <hr class="thin mt-4 mb-4 bg-white">
+        <div class="grid">
+            <div class="form-group">
+                <div class="row">
+                    <div class="cell-12">
+                        <input id ="mobile" type="text" data-role="input" data-prepend="<span class='mif-mobile'>" placeholder="手机号" data-validate="required mif-mobile">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="cell-8">
+                        <input id="code_" type="text" data-role="input" data-prepend="<span class='mif-envelop'>" placeholder="验证码" data-validate="required minlength=4">
+                    </div>
+                    <div class="cell-4">
+                        <div id="getcode_id" style="float: right;border: 1px solid #009ff0;color: #fff;background: #009ff0;height: 36px;width: 100px;text-align: center;line-height: 36px;">
+                        <p>验证码</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            
+            
+        </div>
+        <div class="form-group mt-10">
+            <button id="smslogin_submit_id" class="button" style="width:300px;background: #009ff0;color: #fff;">登录</button>
+        </div>
+    </form>
+    <p style="text-align: center;
+    line-height: 2.2;
+    padding: 15px 0;margin-top: 62rem;color:white;">
+    Copyright © 2019- 2020 自动预约平台
+    </p>
+
+
+
+    <script src="./v4/js/metro.js"></script>
+    <script>
+        function invalidForm(){
+            var form  = $(this);
+            form.addClass("ani-ring");
+            setTimeout(function(){
+                form.removeClass("ani-ring");
+            }, 1000);
+        }
+
+        function validateForm(){
+            console.log('tijiao')
+            // $(".login-form").animate({
+            //     opacity: 0
+            // });
+            
+        }
+
+
+        $('#getcode_id').on("click", function(e){ 
+            var mobile = $("#mobile").val();
+
+            $.post(base_url+"/getVerCode", {
+                mobile: mobile
+            }).then(
+                function(response){
+                    console.log(response);
+                },
+                function(xhr){
+                    console.log(xhr.status, xhr.statusText);
+                }
+            )
+        });
+
+
+        $('#smslogin_submit_id').on("click", function(e){ 
+            var openid = storage["openId"];
+            var mobile = $("#mobile").val();
+            var code = $("#code_").val();
+
+            $.post(base_url+"/smsLogin", {
+                mobile: mobile,
+                openid: openid,
+                code:code
+            }).then(
+                function(response){
+                    console.log(response)
+                    if(response.status=='1'){
+                        storage.setItem("mobile",response.data[1]);
+                        window.location.href = './home.html';
+                    }
+                    console.log(response);
+                },
+                function(xhr){
+                    console.log(xhr.status, xhr.statusText);
+                }
+            )
+        });
+    </script>
+
+</body>
+</html>
