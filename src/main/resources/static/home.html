@@ -527,13 +527,17 @@
             $(this).siblings().find("em").removeClass("onsel");
 
             //5 H5获取定位 & 6 加载场馆信息
-            getLocation();
-
-
-            var lng1 = 121.515244;// 经度;
-            var lat1 = 31.181736;// 维度;
-            //6 加载场馆信息
-            getVenues(lng1,lat1);
+            var ua = navigator.userAgent.toLowerCase();
+            var isWeixin = ua.indexOf('micromessenger') != -1;
+            if (isWeixin) {
+                getLocation();
+            }else{
+                var lng1 = 121.515244;// 经度;
+                var lat1 = 31.181736;// 维度;
+                //6 加载场馆信息
+                getVenues(lng1,lat1);
+            }
+            
         });
 
         function getLocation(){ 
@@ -1043,6 +1047,15 @@
                     $('#venus_list_indexid').empty();
                     $('#venus_list_indexid').append(div_str);
                     
+                }
+            });
+
+            //保存经纬度
+            $.ajax({
+                type : "POST"
+                ,url:base_url+"/saveLocus"
+                ,data:{"lng":lng1,"lat":lat1,'openId':storage['openId']}
+                ,success:function(result) {
                 }
             });
         }

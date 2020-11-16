@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.vo.appot;import lombok.Data;import java.util.Date;/** * @author mc * @version Mon Nov 16 16:29:53 2020 */@Datapublic class LocusVo{   private String id;   private String openId;   private Date createDate;}

@@ -527,13 +527,17 @@
             $(this).siblings().find("em").removeClass("onsel");
 
             //5 H5获取定位 & 6 加载场馆信息
-            getLocation();
-
-
-            var lng1 = 121.515244;// 经度;
-            var lat1 = 31.181736;// 维度;
-            //6 加载场馆信息
-            getVenues(lng1,lat1);
+            var ua = navigator.userAgent.toLowerCase();
+            var isWeixin = ua.indexOf('micromessenger') != -1;
+            if (isWeixin) {
+                getLocation();
+            }else{
+                var lng1 = 121.515244;// 经度;
+                var lat1 = 31.181736;// 维度;
+                //6 加载场馆信息
+                getVenues(lng1,lat1);
+            }
+            
         });
 
         function getLocation(){ 

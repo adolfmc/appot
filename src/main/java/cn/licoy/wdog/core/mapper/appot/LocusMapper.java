@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.mapper.appot;import cn.licoy.wdog.core.entity.appot.Locus;import com.baomidou.mybatisplus.mapper.BaseMapper;import org.apache.ibatis.annotations.Mapper;import org.springframework.stereotype.Repository;/** * @author mc * @version Mon Nov 16 16:20:04 2020 */@Mapper@Repositorypublic interface LocusMapper extends BaseMapper<Locus> {}
