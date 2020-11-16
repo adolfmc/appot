@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="前端页面升级V1.0.1(html 拆分成多个模块页面）">
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assistant/js/venueOpera.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assistant/js/venueOpera.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,7 +385,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605543422108</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="前端页面升级V1.0.1(html 拆分成多个模块页面）">
+      <created>1605543687706</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605543687706</updated>
+    </task>
+    <task id="LOCAL-00008" summary="前端页面升级V1.0.1(html 拆分成多个模块页面）">
+      <created>1605543703285</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605543703285</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -486,26 +499,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="444" height="466" key="DebuggerActiveHint/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605454361601" />
-    <state width="1877" height="411" key="GridCell.Tab.0.bottom" timestamp="1605515403900">
+    <state width="1877" height="431" key="GridCell.Tab.0.bottom" timestamp="1605543587849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="411" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605515403900" />
-    <state width="1877" height="245" key="GridCell.Tab.0.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487749401" />
-    <state width="1877" height="411" key="GridCell.Tab.0.center" timestamp="1605515403899">
+    <state width="1877" height="431" key="GridCell.Tab.0.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
+    <state width="1877" height="431" key="GridCell.Tab.0.center" timestamp="1605543587849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="411" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605515403899" />
-    <state width="1877" height="245" key="GridCell.Tab.0.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487749401" />
-    <state width="1877" height="411" key="GridCell.Tab.0.left" timestamp="1605515403898">
+    <state width="1877" height="431" key="GridCell.Tab.0.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
+    <state width="1877" height="431" key="GridCell.Tab.0.left" timestamp="1605543587849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="411" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605515403898" />
-    <state width="1877" height="245" key="GridCell.Tab.0.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487749401" />
-    <state width="1877" height="411" key="GridCell.Tab.0.right" timestamp="1605515403900">
+    <state width="1877" height="431" key="GridCell.Tab.0.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
+    <state width="1877" height="431" key="GridCell.Tab.0.right" timestamp="1605543587849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="411" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605515403900" />
-    <state width="1877" height="245" key="GridCell.Tab.0.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487749401" />
+    <state width="1877" height="431" key="GridCell.Tab.0.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
     <state width="1877" height="411" key="GridCell.Tab.1.bottom" timestamp="1605515403678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -526,6 +539,10 @@
     </state>
     <state width="1877" height="411" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605515403678" />
     <state width="1877" height="323" key="GridCell.Tab.1.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487644896" />
+    <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1605543508016">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="595" y="280" key="MultipleFileMergeDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543508016" />
     <state x="690" y="221" key="RollbackChangesDialog" timestamp="1605447366829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -534,6 +551,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447944713" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605543424588">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543424588" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605530591121">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
