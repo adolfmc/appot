@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--微信浏览器缓存清理-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Metro 4 -->
+    <link rel="stylesheet" href="./v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="./v4/css/metro.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-icons.min.css">
+    <script src="./v4/js/metro.min.js"></script>
+    <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/style.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
+    <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/home_list.css" type="text/css" rel="stylesheet">
+
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/jquery.excoloSlider.js"></script>
+    <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
+
+    <script src="./assistant/js/swiper.min.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
+    <script src="./assistant/js/layer/layer.js"></script>
+    <script src="./assistant/js/tools.js?v=Math.random()"></script>
+    <script src="./assistant/js/home.js?v=Math.random()"></script>
+    <script src="./assistant/js/venueOpera.js?v=Math.random()"></script>
+    <!-- <script src="./assistant/js/jweixin-1.6.0.js"></script> -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100%;">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="./home.html"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a href="./order_list.html"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
+        <!--  内容 START MAIN 面板  -->
+        <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
+            <!-- 标题 -->
+            <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+                <div>
+                    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+                        <span class="mif-menu fg-white"></span>
+                        <!-- <span id="span_pid" style="width:350px;font-size:1.3rem;color: white;">首页</span> -->
+                    </button>
+                </div>
+                
+                <div class="search">
+                    <input type="text" placeholder="请输入场馆名、地址、区域" name="" id="" />
+                    <button ><i>搜索</i></button>
+                </div>
+
+            </div>
+
+   
+
+            <!--  提交订单 -->
+            <div id="id_show_order" style="display:''">
+                <input type="hidden" name="amount_" id="amount_">
+                <input type="hidden" name="appotDate" id="appotDate">
+                <input type="hidden" name="venue_name" id="venue_name">
+
+
+                <input type="hidden" name="siteNos" id="siteNos">
+                <input type="hidden" name="stimes" id="stimes">
+                <input type="hidden" name="etimes" id="etimes">
+                <input type="hidden" name="prices" id="prices">
+                <input type="hidden" name="siteNames" id="siteNames">
+
+
+                <input type="hidden" name="venueId" id="venueId" />
+                <input type="hidden" name="siteId" id="siteId" />
+                <input type="hidden" name="productId" id="productId" />
+                <input type="hidden" name="isHalf" id="isHalf" />
+                <input type="hidden" name="sportType" id="sportType" />
+                <div class="order_name_site">
+                    <span>场馆</span>
+                    <div class="order_venue" id='order_venue_name_'>CG</div>
+                </div>
+                <div class="order_name_site">
+                    <span>预订场次</span>
+                    <ul id="order_venue_list"></ul>
+                </div>
+
+                <div class="order_Fill">
+                    <div class="order_name_site">
+                        <span>手机号</span>
+                        <div class="order_venue">
+                            <input type="tel" name="tel" id="tel" style="border: 0px;box-shadow:none"placeholder="请输入手机号" />
+                        </div>
+                    </div>
+                </div>
+                <div class="pay_Btn marTop30">
+                    <a href="javascript:void(0);" onclick="to_pay_order()" class="toDo_sub">提交订单</a>
+                </div>
+                <div style="height:400px;background: #fff!important">&nbsp;</div>
+            </div>
+
+            <!--  内容 END  -->
+        </div>
+    </div>
+
+
+    <!-- Metro 4 -->
+    <script>
+
+
+        function init(){
+            var datee=getUrlParam('datee');
+            var venueId=getUrlParam('venueId');
+            var siteId=getUrlParam('siteId');
+            var productId=getUrlParam('productId');
+            var isHalf=getUrlParam('isHalf');
+            var sportType=getUrlParam('sportType');
+            var amount_=getUrlParam('amount_');
+            var appotDate=getUrlParam('appotDate');
+            appotDate = decodeURIComponent( decodeURIComponent(appotDate)) ;
+            $('#venueId').val(venueId);
+            $('#productId').val(productId);
+            $('#isHalf').val(isHalf);
+            $('#siteId').val(siteId);
+            $('#sportType').val(sportType);
+            $('#amount_').val(amount_);
+            $('#appotDate').val(appotDate );
+
+
+
+
+
+            var siteNos=getUrlParam('siteNos');
+            var stimes=getUrlParam('stimes');
+            var etimes=getUrlParam('etimes');
+            var prices=getUrlParam('prices');
+            var siteNames=getUrlParam('siteNames');
+
+                siteNos=decodeURIComponent(siteNos);
+                stimes=decodeURIComponent(stimes);
+                etimes=decodeURIComponent(etimes);
+                prices=decodeURIComponent(prices);
+                siteNames=decodeURIComponent( decodeURIComponent(siteNames) );
+            $('#siteNos').val(siteNos);
+            $('#stimes').val(stimes);
+            $('#etimes').val(etimes);
+            $('#prices').val(prices);
+            $('#siteNames').val(siteNames);
+
+            var amount_=0;
+            var li_str='';
+
+            for(var i=0;i<siteNos.split(',').length;i++){
+                var siteName = siteNames.split(',')[i];
+                var sitePrice = prices.split(',')[i];
+                var stime = stimes.split(',')[i];
+                var etime = etimes.split(',')[i];
+                li_str = li_str + '<li> '+siteName+' &nbsp;&nbsp;&nbsp; '+appotDate+' &nbsp;&nbsp;&nbsp; '+stime+'-'+etime+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sitePrice+'元 </li>'
+                amount_ = Number(amount_) + Number(sitePrice) ; 
+            }
+
+            //设置订单查询页面 手机号
+            $("#tel").val(storage['mobile']);
+            $("#order_venue_list").empty();
+            $('#order_venue_list').append(li_str);
+
+            
+            // // $("#venue_name").val(amount_); TODO
+            
+        }
+
+
+        $(function () {
+            init();//初始化
+
+            
+        });
+
+
+        // 提交交易订单
+        function to_pay_order(){
+            var venueId=$("#venueId").val();
+            var sportType=$("#sportType").val();
+            var siteId=$("#siteId").val();
+            var productId=$("#productId").val();
+            var ishalf=$("#isHalf").val();
+            var time=getUrlParam('datee');
+
+            $.ajax({
+                type : "POST"
+                ,data:{
+                    siteNo:$('#siteNos').val(),
+                    stime:$('#stimes').val(),
+                    etime:$('#etimes').val(),
+                    price:$('#prices').val(),
+                    siteName:$('#siteNames').val(),
+                    time:time,
+                    venueId:venueId,
+                    sportType:sportType,
+                    siteId:siteId,
+                    productId:productId,
+                    isHalf:ishalf,
+                    openId:storage['openId'],
+                    mobile:storage['mobile']
+                    }
+                ,url:base_url+"/sendOrder"
+                ,success:function(result) {
+                    var orderId = result.data.id;
+                    var createDate = result.data.createDate;
+                    $('#createDate').val(  formatDate(createDate)  );
+                    $('#orderId').val(orderId);
+                    var amount_=getUrlParam('amount_');
+
+                    window.location.href="./pay.html?orderId="+orderId+"&createDate="+formatDate(createDate)+"&amount_="+amount_
+                    
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

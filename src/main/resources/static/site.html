@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--微信浏览器缓存清理-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Metro 4 -->
+    <link rel="stylesheet" href="./v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="./v4/css/metro.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-icons.min.css">
+    <script src="./v4/js/metro.min.js"></script>
+    <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/style.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
+    <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/home_list.css" type="text/css" rel="stylesheet">
+
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/jquery.excoloSlider.js"></script>
+    <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
+
+    <script src="./assistant/js/swiper.min.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
+    <script src="./assistant/js/layer/layer.js"></script>
+    <script src="./assistant/js/tools.js?v=Math.random()"></script>
+    <script src="./assistant/js/home.js?v=Math.random()"></script>
+    <script src="./assistant/js/venueOpera.js?v=Math.random()"></script>
+    <!-- <script src="./assistant/js/jweixin-1.6.0.js"></script> -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100%;">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="./home.html"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a href="./order_list.html"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
+        <!--  内容 START MAIN 面板  -->
+        <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
+            <!-- 标题 -->
+            <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+                <div>
+                    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+                        <span class="mif-menu fg-white"></span>
+                        <!-- <span id="span_pid" style="width:350px;font-size:1.3rem;color: white;">首页</span> -->
+                    </button>
+                </div>
+                
+                <div class="search">
+                    <input type="text" placeholder="请输入场馆名、地址、区域" name="" id="" value="" />
+                    <button ><i>搜索</i></button>
+                </div>
+
+            </div>
+
+
+            <!--  选择商品 -->
+            <div id="id_product" style="display:'' ; padding-bottom:550px;">
+                <input type="hidden" name="venueId" id="venueId" />
+                <input type="hidden" name="siteId" id="siteId" />
+                <input type="hidden" name="productId" id="productId" />
+                <input type="hidden" name="isHalf" id="isHalf" />
+                <input type="hidden" name="sportType" id="sportType" />
+
+
+                <input type="hidden" name="amount_" id="amount_" >
+                <input type="hidden" name="choose_date" id="choose_date" >
+                <input type="hidden" name="venue_name" id="venue_name" >
+                <input type="hidden" name="siteNos" id="siteNos" >
+                <input type="hidden" name="stimes" id="stimes" >
+                <input type="hidden" name="etimes" id="etimes" >
+                <input type="hidden" name="prices" id="prices" >
+                <input type="hidden" name="siteNames" id="siteNames" >
+
+                <div class="seletimes_top" id="seletimes2">
+                    <div id="siteItem2" style="width: 10000px;">
+                    </div>
+                </div>
+
+                <div class="spinner" id="spinnerid" style="display:none;">
+                    <div>
+                        <p class="bounce1"></p>
+                        <p class="bounce2"></p>
+                        <p class="bounce3"></p>
+                    </div>
+                </div>
+                <div class="selectday">
+                    <div class="seletimes" id="seletimes">
+                        <div style="width: 10000px; padding-left: 62px;" id="siteItem">
+                        </div>
+                    </div>
+                    <div class="dialog" data-role="dialog" id="demoDialog1">
+                        <!-- 弹窗日历-->
+                        <div id='calendar2' class="dialog-content" style="height:320px;width:100%;overflow:scroll;">
+                        </div>
+                        <div class="dialog-actions" style="display: none;">
+                            <button class="button js-dialog-close">Disagree</button>
+                        </div>
+                    </div>
+                    <div class="selectnom">
+                    </div>
+                </div>
+                <div class="venue_Bottom">
+                    <div class="signal">
+                        <div class="signal_Img" id="signal_Img">
+                            <span>
+                                <div class="wodeyuding"></div>
+                                <p>已选择</p>
+                            </span>
+                            <span>
+                                <div class="keyiding"></div>
+                                <p>可预订</p>
+                            </span>
+                            <span>
+                                <div class="yiyuding"></div>
+                                <p>已预订</p>
+                            </span>
+                            <span>
+                                <div class="yishouwan"></div>
+                                <p>已售完</p>
+                            </span>
+                        </div>
+                        <div class="signal_venues" style="display: none;">
+                            <div id="haveChoose"></div>
+                        </div>
+                    </div>
+                    <div class="pay_Btn">
+                        <div class="toDo_pay" style="background: rgb(204, 204, 204);">确定</div>
+                    </div>
+                </div>
+            </div>
+            <!--  内容 END  -->
+        </div>
+    </div>
+
+
+    <!-- Metro 4 -->
+    <script>
+        function init(){
+            var datee=getUrlParam('datee');
+            var venueId=getUrlParam('venueId');
+            var siteId=getUrlParam('siteId');
+            var productId=getUrlParam('productId');
+            var isHalf=getUrlParam('isHalf');
+            var sportType=getUrlParam('sportType');
+            $('#venueId').val(venueId);
+            $('#productId').val(productId);
+            $('#isHalf').val(isHalf);
+            $('#siteId').val(siteId);
+            $('#sportType').val(sportType);
+            $('#choose_date').val(datee);
+            
+        }
+
+
+        $(function () {
+            init() ;//初始化
+
+            //1 加载 site 信息
+            var datee=getUrlParam('datee');
+            loadding_site(datee);
+        });
+
+        function loadding_site(datee){
+             // //1 调整 产品页头部日期 TODO
+             $.ajax({type : "POST",contentType: "text/html; charset=utf-8", url : base_url+"/get7Days?datee="+datee,
+                success : function(result) {
+                    var li_str=""
+                    for(var i=0;i<result.length;i++){
+                        //判断字体CSS样式
+                        var font_class_=""
+                        if(datee==result[i][0]){
+                            font_class_="cur"
+                        }
+
+                        var dd = result[i][0].split('-')
+                        dd = dd[1]+'/'+dd[2]
+                        li_str=li_str
+                        +"<dl class=\""+font_class_+"\" onclick=\"timeChoose(this,'"+result[i][0]+"')\" time=\""+result[i][0]+"\"> <dt>"
+                        +   "周"+result[i][1]+"<br>"+dd+""
+                        +"</dl></dl>"
+                    }
+
+                    $("#siteItem2").empty();
+                    $('#siteItem2').append(li_str);
+
+                    // 请求指定日期数据
+                    var index = 0;
+                    var dls = $('#siteItem2 >dl') ;
+                    for(var i=0 ;i<dls.length;i++){
+                        if(dls[i].className =='cur'){
+                            timeChoose(dls[i],datee)
+                            index = i ;
+                        }
+                    }
+
+                    // 滚动到指定日期位置
+                    scrollX(index)
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

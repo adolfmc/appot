@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--微信浏览器缓存清理-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Metro 4 -->
+    <link rel="stylesheet" href="./v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="./v4/css/metro.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-icons.min.css">
+    <script src="./v4/js/metro.min.js"></script>
+    <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/style.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
+    <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/home_list.css" type="text/css" rel="stylesheet">
+
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/jquery.excoloSlider.js"></script>
+    <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
+
+    <script src="./assistant/js/swiper.min.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
+    <script src="./assistant/js/layer/layer.js"></script>
+    <script src="./assistant/js/tools.js?v=Math.random()"></script>
+    <script src="./assistant/js/home.js?v=Math.random()"></script>
+    <script src="./assistant/js/venueOpera.js?v=Math.random()"></script>
+    <!-- <script src="./assistant/js/jweixin-1.6.0.js"></script> -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100%;">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="./home.html"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a href="./order_list.html"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
+        <!--  内容 START MAIN 面板  -->
+        <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
+            <!-- 标题 -->
+            <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+                <div>
+                    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+                        <span class="mif-menu fg-white"></span>
+                        <!-- <span id="span_pid" style="width:350px;font-size:1.3rem;color: white;">首页</span> -->
+                    </button>
+                </div>
+                
+                <div class="search">
+                    <input type="text" placeholder="请输入场馆名、地址、区域" name="" id="" value="" />
+                    <button ><i>搜索</i></button>
+                </div>
+
+            </div>
+
+            <!--  主页面 -->
+            <div id="id_home" style="display:'' ">
+                <div id="wapper" class="wapper">
+                    <input type="hidden" name="venueId" id="venueId" />
+                    <input type="hidden" name="siteId" id="siteId" />
+                    <input type="hidden" name="productId" id="productId" />
+                    <input type="hidden" name="isHalf" id="isHalf" />
+                    <input type="hidden" name="sportType" id="sportType" />
+
+
+                    <div class="venue_Top">
+                        <div class="venue-Img" >
+                            <img id="venueImg2" src="https://img.dongsport.com/thumbimg/67/34/e6c04099-c04d-4ab5-b8bf-6c62c113d54a_750xx360.jpg" alt="">
+                        </div>
+                        <div class="venue-Name" id="venue-Name">
+                            <div id='venueName_'>CG</div>
+                            <div class="startscore">
+                                <div class="star"></div>
+                                <div class="score">5分</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="venue-Address"  style="font-size: 14px;vertical-align:middle;">
+                        <div id="venue_address_" style="width: 30rem;text-align: center;margin-right: auto;margin-left: auto;line-height: auto;">ADR</div>
+                        <!-- <p style="text-align: center;margin-top: 6px;">青浦区 徐泾镇双联路378号7号楼</br>(近明珠路;微格创意园内)</p>
+                        <p style="text-align: center;">tel:021-39889876</p> -->
+                    </div>
+                </div>
+                
+                <div class="v-contents">
+                    <div class="venues_Tab" id="venues_Tab" style="width:100%;">
+                        <div style="white-space: nowrap;overflow-x: auto;">
+                            <span onclick="sportType(this,'288322')" id="288322" value="288322" class="cur">羽毛球</span>
+                        </div>
+                        <div class="move_bar" style="width: 86px; center: 0px;"></div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <!-- 首页 日历-->
+                    <div id='calendar'></div>
+                </div>
+            </div>
+            <!--  内容 END  -->
+        </div>
+    </div>
+
+
+    <!-- Metro 4 -->
+    <script>
+        $(function () {
+            var venueId=getUrlParam('venueId');
+            var siteId=getUrlParam('siteId');
+            var productId=getUrlParam('productId');
+            var isHalf=getUrlParam('isHalf');
+            var sportType=getUrlParam('sportType');
+            $('#venueId').val(venueId);
+            $('#productId').val(productId);
+            $('#isHalf').val(isHalf);
+            $('#siteId').val(siteId);
+            $('#sportType').val(sportType);
+
+            //1 加载Venue 信息
+            loadding_venue(venueId);
+
+            //1 加载日历 (首页日历 & 商品页 弹窗日历)
+            get_calendar('calendar');
+        });
+
+        function choose_site(datee){
+            var venueId=getUrlParam('venueId');
+            var siteId=getUrlParam('siteId');
+            var productId=getUrlParam('productId');
+            var isHalf=getUrlParam('isHalf');
+            var sportType=getUrlParam('sportType');
+
+            window.location.href="./site.html?datee="+datee+"&venueId="+venueId+"&siteId="+siteId+"&productId="+productId+"&isHalf="+isHalf+"&sportType="+sportType ;
+        }
+
+        function loadding_venue(venueId){
+            $.ajax({
+                type : "POST"
+                ,url:base_url+"/getVenueById"
+                ,data:{"id":venueId }
+                ,success:function(result) {
+                    $('#venueImg2').attr('src',result.data.img+'?'+Math.random());
+                    $('#venueName_').html( result.data.venueName );
+                    $('#venue_address_').html( result.data.addres  ).append(' ;tel:').append( result.data.tel );
+                }
+            });
+        }
+    </script>
+</body></html>

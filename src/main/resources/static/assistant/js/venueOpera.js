@@ -287,7 +287,6 @@ function timeChoose(obj,times){
 function toPendingOrder(){
     var siteNo=new  Array();
 
-
     var mobile = storage['mobile'];
     if(mobile == undefined || mobile == ''){
         window.location=base_url+'/static/login.html' ;
@@ -370,23 +369,41 @@ function toPendingOrder(){
         }
 
         //设置订单查询页面 手机号
-        $("#tel").val(storage['mobile']);
-        $("#amount_").val(amount_);
-        $("#span_amount_").html('￥'+amount_) ;
-        $("#confrom_amount_").html('确认支付'+amount_+'元') ;
-        // // $("#venue_name").val(amount_); TODO
-        $("#order_venue_list").empty();
-        $('#order_venue_list').append(li_str);
+        // $("#tel").val(storage['mobile']);
+        // $("#amount_").val(amount_);
+        // $("#span_amount_").html('￥'+amount_) ;
+        // $("#confrom_amount_").html('确认支付'+amount_+'元') ;
+        // // // $("#venue_name").val(amount_); TODO
+        // $("#order_venue_list").empty();
+        // $('#order_venue_list').append(li_str);
+        // $('#siteNos').val(siteNos);
+        // $('#stimes').val(stimes);
+        // $('#etimes').val(etimes);
+        // $('#prices').val(prices);
+        // $('#siteNames').val(siteNames);
 
 
+        var datee=getUrlParam('datee');
+        var venueId=getUrlParam('venueId');
+        var siteId=getUrlParam('siteId');
+        var productId=getUrlParam('productId');
+        var isHalf=getUrlParam('isHalf');
+        var sportType=getUrlParam('sportType');
 
-        $('#siteNos').val(siteNos);
-        $('#stimes').val(stimes);
-        $('#etimes').val(etimes);
-        $('#prices').val(prices);
-        $('#siteNames').val(siteNames);
-        ck_show_order();
-        
+
+        window.location.href="./order.html?datee="+datee
+        +"&venueId="+venueId
+        +"&siteId="+siteId
+        +"&productId="+productId
+        +"&isHalf="+isHalf
+        +"&sportType="+sportType
+        +"&amount_="+amount_
+        +"&appotDate="+ encodeURIComponent(encodeURIComponent(appotDate))
+        +"&siteNos="+encodeURIComponent(siteNos)
+        +"&stimes="+encodeURIComponent(stimes)
+        +"&etimes="+encodeURIComponent(etimes)
+        +"&prices="+encodeURIComponent(prices)
+        +"&siteNames="+ encodeURIComponent( encodeURIComponent(siteNames) );
     }else{
         layer.msg("请选择场地！");
     }

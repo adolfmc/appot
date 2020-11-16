@@ -287,7 +287,6 @@ function timeChoose(obj,times){
 function toPendingOrder(){
     var siteNo=new  Array();
 
-
     var mobile = storage['mobile'];
     if(mobile == undefined || mobile == ''){
         window.location=base_url+'/static/login.html' ;
@@ -385,8 +384,29 @@ function toPendingOrder(){
         $('#etimes').val(etimes);
         $('#prices').val(prices);
         $('#siteNames').val(siteNames);
-        ck_show_order();
-        
+
+
+        var datee=getUrlParam('datee');
+        var venueId=getUrlParam('venueId');
+        var siteId=getUrlParam('siteId');
+        var productId=getUrlParam('productId');
+        var isHalf=getUrlParam('isHalf');
+        var sportType=getUrlParam('sportType');
+
+
+        window.location.href="./order.html?datee="+datee
+        +"&venueId="+venueId
+        +"&siteId="+siteId
+        +"&productId="+productId
+        +"&isHalf="+isHalf
+        +"&sportType="+sportType
+        +"&amount_="+amount_
+        +"&appotDate="+encodeURIComponent(appotDate)
+        +"&siteNos="+encodeURIComponent(siteNos)
+        +"&stimes="+encodeURIComponent(stimes)
+        +"&etimes="+encodeURIComponent(etimes)
+        +"&prices="+encodeURIComponent(prices)
+        +"&siteNames="+encodeURIComponent(siteNames) ;
     }else{
         layer.msg("请选择场地！");
     }

@@ -19,7 +19,40 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="保存客户执行经纬度数据" />
+    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="前端 代码升级V1.0.0">
+      <change afterPath="$PROJECT_DIR$/.shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assistant/css/home_list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/left.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/order_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/order_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/pay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/site.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/venue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appot.iws" beforeDir="false" afterPath="$PROJECT_DIR$/appot.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/VenueDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/VenueDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/VenueDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/VenueDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/MP_verify_JhO2WS095phwvOSc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assistant/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assistant/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assistant/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assistant/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assistant/js/venueOpera.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assistant/js/venueOpera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/c1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/controller/appot/VenueDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/controller/appot/VenueDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/service/appot/VenueDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/service/appot/VenueDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/service/appot/impl/VenueDetailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/licoy/wdog/core/service/appot/impl/VenueDetailServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/MP_verify_JhO2WS095phwvOSc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/assistant/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assistant/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/assistant/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assistant/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/assistant/js/venueOpera.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assistant/js/venueOpera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/c1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/home copy.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -467,6 +500,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447636426" />
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1605523731182">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605523731182" />
     <state width="444" height="466" key="DebuggerActiveHint" timestamp="1605454361601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -519,6 +556,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447944713" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605530591121">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605530591121" />
     <state x="662" y="252" width="596" height="536" key="find.popup" timestamp="1605453751233">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -64,7 +64,7 @@ function create_calendar1(result,which_){
             var datee=info_[i][j][1]
             tdd = tdd
             +"<td class='hometable_td'  "+_css_td_today+">"
-                +"<a onclick=\"ck_go_product('"+datee+"')\"  "+_css_a+">"
+                +"<a onclick=\"choose_site('"+datee+"')\"  "+_css_a+">"
                     +"<p style='"+_css_datee+"'> "+(info_[i][j][1].split('-')[2])+"</p> "
                     +"<p style='"+_css_tag+"'>充足</p>"
                 +"</a> "
@@ -96,7 +96,9 @@ function create_calendar1(result,which_){
     $('#'+which_).append(calendar_) ;
 }
 
+function choose_site(datee){
 
+}
 
 function create_calendar2(result,which_){
     var info = new Array();
@@ -154,7 +156,7 @@ function create_calendar2(result,which_){
             var datee=info_[i][j][1]
             tdd = tdd
             +"<td class='hometable_td'  "+_css_td_today+">"
-                +"<a onclick=\"ck_go_product('"+datee+"')\" class='js-dialog-close' "+_css_a+">"
+                +"<a onclick=\"choose_site('"+datee+"')\" class='js-dialog-close' "+_css_a+">"
                     +"<p style='"+_css_datee+"'> "+(info_[i][j][1].split('-')[2] )+"</p> "
                 +"</a> "
             +"</td> "

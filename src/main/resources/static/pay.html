@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--微信浏览器缓存清理-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Metro 4 -->
+    <link rel="stylesheet" href="./v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="./v4/css/metro.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-icons.min.css">
+    <script src="./v4/js/metro.min.js"></script>
+    <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/style.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
+    <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/home_list.css" type="text/css" rel="stylesheet">
+
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/jquery.excoloSlider.js"></script>
+    <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
+
+    <script src="./assistant/js/swiper.min.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
+    <script src="./assistant/js/layer/layer.js"></script>
+    <script src="./assistant/js/tools.js?v=Math.random()"></script>
+    <script src="./assistant/js/home.js?v=Math.random()"></script>
+    <script src="./assistant/js/venueOpera.js?v=Math.random()"></script>
+    <!-- <script src="./assistant/js/jweixin-1.6.0.js"></script> -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100%;">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="./home.html"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a href="./order_list.html"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
+        <!--  内容 START MAIN 面板  -->
+        <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
+            <!-- 标题 -->
+            <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+                <div>
+                    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+                        <span class="mif-menu fg-white"></span>
+                        <!-- <span id="span_pid" style="width:350px;font-size:1.3rem;color: white;">首页</span> -->
+                    </button>
+                </div>
+                
+                <div class="search">
+                    <input type="text" placeholder="请输入场馆名、地址、区域" name="" id="" value="" />
+                    <button ><i>搜索</i></button>
+                </div>
+
+            </div>
+
+    
+            <!--  订单支付 -->
+            <div id="id_pay_order" style="display:''">
+                <form method="post">
+                    <input type="hidden" name="orderId" id="orderId" value="">
+                    <input type="hidden" name="venueId" value="297881">
+                    <input type="hidden" name="orderMoney" id="orderMoney" value="75.0">
+                    <input type="hidden" name="createDate" id="createDate" value="2020-09-30 13:21:00">
+                    <input type="hidden" name="payType">
+
+
+                    <div id="wapper">
+                        <div class="pay_Times">
+                            <div class="pay_Times_title">支付剩余时间</div>
+                            <div>
+                                <span id="minute_show_s">0</span>
+                                <span id="minute_show_g">9</span>
+                                :
+                                <span id="second_show_s">3</span>
+                                <span id="second_show_g">4</span>
+
+                            </div>
+                           
+                        </div>
+                        <div class="pay_order_detail">
+                            <span class="order-venue-Img"><img
+                                    src="https://img.dongsport.com/thumbimg/90/40/18e0a9f9-81d3-45e9-83c6-a7706b6408ec_750xx360.jpg"
+                                    alt=""></span>
+                            <div class="">
+                                <p class="order-venue-i"><span id ="span_amount_">￥75.0</span></p>
+                                <p class="order-venue-n"><span>DC羽毛球馆(YONEX徐泾馆）</span></p>
+                            </div>
+                        </div>
+                        <div class=""><img src="" alt=""></div>
+                        
+                        <div class="paytarget">
+                            <ul id="payType">
+                                <li id="wx"><i class="weixinzhifu"></i>
+                                    <p class="f16">微信支付</p>
+                                    <p class="f12">推荐有微信账号的用户使用</p>
+                                    <em id="sel_0" data-type="wx"></em>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pay_Btn marTop30">
+                            <span id="confrom_amount_"  class="toDo_sub" style="cursor: pointer" onclick="pay_order()">确认支付75.0元</span>
+                        </div>
+                        <div style="height:400px;background: #fff!important">&nbsp;</div>
+                    </div>
+                </form>
+
+            </div>
+            <!--  内容 END  -->
+        </div>
+    </div>
+
+
+    <!-- Metro 4 -->
+    <script>
+        function timer() {
+            var createDate=$("#createDate").val();
+            // 准备
+            var countdownMinute = 10;//10分钟倒计时
+            var startTimes = new Date(createDate.replace(/-/g,"/"));//开始时间 new Date('2016-11-16 15:21');
+            var endTimes = new Date(startTimes.setMinutes(startTimes.getMinutes()+countdownMinute));//结束时间
+            var curTimes = new Date();//当前时间
+            var surplusTimes = endTimes.getTime()/1000 - curTimes.getTime()/1000;//结束毫秒-开始毫秒=剩余倒计时间
+        
+            // 进入倒计时
+            countdowns = window.setInterval(function(){
+                surplusTimes--;
+                var minu = Math.floor(surplusTimes/60);
+                var secd = Math.round(surplusTimes%60);
+                // console.log(minu+':'+secd);
+                if(minu<10){
+                    $('#minute_show_s').html('0');
+                    $('#minute_show_g').html(minu);
+                    $('#second_show_s').html(parseInt(secd/10));
+                    $('#second_show_g').html(secd%10);
+                }else{
+                    $('#minute_show_s').html('1');
+                    $('#minute_show_g').html('0');
+                    $('#second_show_s').html('0');
+                    $('#second_show_g').html('0');
+                }
+                if(surplusTimes<=0){
+                    console.log('时间到！');
+                    //window.location="/app/order/myorder.action?venueId="+$("input[name='venueId']").val();
+                    //clearInterval(countdowns);
+                }
+            },1000);
+        }
+
+        function init(){
+            var orderId=getUrlParam('orderId');
+            var createDate=getUrlParam('createDate');
+            $('#orderId').val(orderId);
+            $('#createDate').val(createDate);
+            var amount_=getUrlParam('amount_');
+
+            $("#amount_").val(amount_);
+            $("#span_amount_").html('￥'+amount_) ;
+            $("#confrom_amount_").html('确认支付'+amount_+'元') ;
+        }
+
+        //支付类型选择
+        $("#payType").on("click","li",function(){
+            $("input[name='payType']").val($(this).attr("id"));
+            if($(this).find("em").hasClass("onsel")){
+                $(this).find("em").removeClass("onsel")
+                $("input[name='payType']").val("");
+            }
+            else{
+                $(this).find("em").addClass("onsel")
+                $(this).siblings().find("em").removeClass("onsel")
+            }
+        });
+
+        function pay_order() {
+            var orderId=getUrlParam('orderId');
+            var redirect_url = base_url + "/wxpay/pay.do?order_id="+orderId;
+            //alert(redirect_url);
+            var wxUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx98188fbf500bdf33&redirect_uri=" + encodeURIComponent(redirect_url) + "&response_type=code&scope=snsapi_base#wechat_redirect";
+            // alert("微信："+wxUrl);
+            window.location.href = wxUrl;
+        }
+
+        $(function () {
+            init();//初始化
+            timer();
+        });
+    </script>
+</body>
+
+</html>
