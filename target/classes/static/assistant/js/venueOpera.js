@@ -369,21 +369,18 @@ function toPendingOrder(){
         }
 
         //设置订单查询页面 手机号
-        $("#tel").val(storage['mobile']);
-        $("#amount_").val(amount_);
-        $("#span_amount_").html('￥'+amount_) ;
-        $("#confrom_amount_").html('确认支付'+amount_+'元') ;
-        // // $("#venue_name").val(amount_); TODO
-        $("#order_venue_list").empty();
-        $('#order_venue_list').append(li_str);
-
-
-
-        $('#siteNos').val(siteNos);
-        $('#stimes').val(stimes);
-        $('#etimes').val(etimes);
-        $('#prices').val(prices);
-        $('#siteNames').val(siteNames);
+        // $("#tel").val(storage['mobile']);
+        // $("#amount_").val(amount_);
+        // $("#span_amount_").html('￥'+amount_) ;
+        // $("#confrom_amount_").html('确认支付'+amount_+'元') ;
+        // // // $("#venue_name").val(amount_); TODO
+        // $("#order_venue_list").empty();
+        // $('#order_venue_list').append(li_str);
+        // $('#siteNos').val(siteNos);
+        // $('#stimes').val(stimes);
+        // $('#etimes').val(etimes);
+        // $('#prices').val(prices);
+        // $('#siteNames').val(siteNames);
 
 
         var datee=getUrlParam('datee');
@@ -401,12 +398,12 @@ function toPendingOrder(){
         +"&isHalf="+isHalf
         +"&sportType="+sportType
         +"&amount_="+amount_
-        +"&appotDate="+encodeURIComponent(appotDate)
+        +"&appotDate="+ encodeURIComponent(encodeURIComponent(appotDate))
         +"&siteNos="+encodeURIComponent(siteNos)
         +"&stimes="+encodeURIComponent(stimes)
         +"&etimes="+encodeURIComponent(etimes)
         +"&prices="+encodeURIComponent(prices)
-        +"&siteNames="+encodeURIComponent(siteNames) ;
+        +"&siteNames="+ encodeURIComponent( encodeURIComponent(siteNames) );
     }else{
         layer.msg("请选择场地！");
     }
