@@ -90,7 +90,7 @@ public class AppotController extends AppotBaseController {
     }
 
     @RequestMapping(value = {"/getInfoByDateFromDCYumaoqiu"})
-    public void getInfoByDateFromDCYumaoqiu(HttpServletRequest request, HttpServletResponse response,String datee) throws Exception {
+    public void getInfoByDateFromDCYumaoqiu(HttpServletRequest request, HttpServletResponse response,String datee,String venue_id,String siteId,String sports_type) throws Exception {
         try {
             if (datee==null){
                 return ;
@@ -98,7 +98,7 @@ public class AppotController extends AppotBaseController {
             Date pdate = DateUtils.parseDate(datee,"yyyy-MM-dd") ;
             Date _7Days = DateUtils.addDays(new Date() ,7);
             if(pdate.after(_7Days) ){
-                response.sendRedirect(base_url+"/getInfoByDateFromDCYumaoqiu2?datee="+datee);
+                response.sendRedirect(base_url+"/getInfoByDateFromDCYumaoqiu2?datee="+datee+"&venue_id="+venue_id+"&sports_type="+sports_type);
             }else{
                 response.sendRedirect(base_url+":8010/getInfoByDateFromDCYumaoqiu?datee="+datee);
             }
@@ -125,12 +125,14 @@ public class AppotController extends AppotBaseController {
 
 
         String xq = "星期"+AppotUtils.getWeek(DateUtils.parseDate(datee,"yyyy-MM-dd"));
-        venue_id = "297881";
-        sports_type = "0";
+//        venue_id = "297881";
+//        sports_type = "0";
 
         List<VenueFee> venueFees = venueFeeService.findFeeByVenueId(venue_id,sports_type,xq);
         ExampleClass exampleClass = new ExampleClass();
         Body body = new Body();
+        String etime=null;
+        String stime=null;
 
         List<SiteInfo> siteInfos = new ArrayList<SiteInfo>();
         SiteInfo siteInfo = null;
@@ -141,15 +143,26 @@ public class AppotController extends AppotBaseController {
 
             for(int i=8;i<=22;i++){
                 BookPriceInfo bookPriceInfo = new BookPriceInfo();
-                bookPriceInfo.setBookStatus(0);
+                bookPriceInfo.setBookStatus(1);//1 未预定  ；0 已预定
                 bookPriceInfo.setIsGroup(0);
                 String dd = ("00"+i ).substring( ("00"+i ).length()-2,("00"+i ).length()) ;
                 bookPriceInfo.setBeginTime(datee +" "+ dd +":00");
-                bookPriceInfo.setSalePrice(Double.valueOf(  ReflectionKit.getMethodValue( venueFee,"t"+dd).toString()  ));
 
 
-                dd = ("00"+(i+1) ).substring( ("00"+i ).length()-2,("00"+(i+1) ).length()) ;
+
+                Object fee=ReflectionKit.getMethodValue( venueFee,"t"+dd);
+                Double feeb = null;
+                try{
+                    feeb = Double.valueOf(  fee.toString() );
+                }catch (Exception ex){
+//                    feeb = Double.valueOf("0.0");
+                    bookPriceInfo.setBookStatus(0);//用已预订 方式，让前端不显示
+                }
+                bookPriceInfo.setSalePrice(feeb);
+                dd = ("00"+(i+1) ).substring( ("00"+(i+1) ).length()-2,("00"+(i+1) ).length()) ;
                 bookPriceInfo.setEndTime(datee +" "+ dd +":00");
+
+
                 bookPriceInfos.add(bookPriceInfo) ;
             }
 
@@ -160,12 +173,26 @@ public class AppotController extends AppotBaseController {
             siteInfos.add(siteInfo);
         }
 
-
+        body.setStime(datee+" 08:00");
+        body.setEtime(datee+" 23:00");
+        body.setMinHour(1);
+        body.setCancelHour("0");
+        body.setIsCancel(0);
+        body.setIsConfirm(1);
+        body.setBill(0);
         body.setSiteInfos(siteInfos);
+
         exampleClass.setBody(body);
+        exampleClass.setCode(1);
+        exampleClass.setTotal(0);
+        exampleClass.setMsg("成功");
 
         return exampleClass;
     }
+
+
+
+
 
     @RequestMapping(value = {"/getCalendar"})
     public void getCalendar(HttpServletRequest request, HttpServletResponse response) throws IOException {

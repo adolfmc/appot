@@ -242,10 +242,11 @@
                             <img id="venueImg2" src="https://img.dongsport.com/thumbimg/67/34/e6c04099-c04d-4ab5-b8bf-6c62c113d54a_750xx360.jpg" alt="">
                         </div>
                         <div class="venue-Name" id="venue-Name">
-                            <input type="hidden" name="venueId" id="venueId" />
-                            <input type="hidden" name="siteId" id="siteId" />
-                            <input type="hidden" name="productId" id="productId" />
-                            <input type="hidden" name="isHalf" id="isHalf" />
+                            <input type="text" name="venueId" id="venueId" />
+                            <input type="text" name="siteId" id="siteId" />
+                            <input type="text" name="productId" id="productId" />
+                            <input type="text" name="isHalf" id="isHalf" />
+                            <input type="text" name="sportType" id="sportType" />
                             <div id='venueName_'>CG</div>
                             <div class="startscore">
                                 <div class="star"></div>
@@ -278,19 +279,6 @@
 
             <!--  选择商品 -->
             <div id="id_product" style="display:none ; padding-bottom:550px;">
-                <!-- <div class="week">
-                    <input type="hidden" name="venueId" id="venueId" value="297881">
-                    <input type="hidden" name="sportType" id="sportType" value="0L20">
-                    <input type="hidden" name="venueName" id="venueName" value="DC羽毛球馆(YONEX徐泾馆）">
-                    <input type="hidden" name="siteId" id="siteId" value="288322">
-                    <input type="hidden" name="productId" id="productId" value="10172486">
-                    <input type="hidden" name="isHalf" id="isHalf" value="0">
-
-                    <ul id="week">
-                    </ul>
-
-                </div> -->
-
                 <div class="seletimes_top" id="seletimes2">
                     <div id="siteItem2" style="width: 10000px;">
                     </div>
@@ -702,7 +690,6 @@
 
                     // 滚动到指定日期位置
                     scrollX(index)
-
                 }
             });
 
@@ -1009,12 +996,13 @@
         }
 
 
-        function return_venue(siteId,productId,isHalf,venueName,address,tel,img,venueId){
+        function return_venue(siteId,productId,isHalf,venueName,address,tel,img,venueId,sportType){
             ck_home();
             $('#venueId').val(venueId);
             $('#productId').val(productId);
             $('#isHalf').val(isHalf);
             $('#siteId').val(siteId);
+            $('#sportType').val(sportType);
                
             $('#venueImg2').attr('src',decodeURIComponent(img)+'?'+Math.random());
             $('#venueName_').html(decodeURIComponent(venueName));
@@ -1035,7 +1023,7 @@
                             data = result[i];
                             
                             div_str = div_str + '<div class="myOrder-venue-infor">';
-                            div_str = div_str + '<li><a href=javascript:return_venue("'+data.siteId+'","'+data.productId+'","'+data.isHalf+'","'+encodeURIComponent(data.venueName)+'","'+encodeURIComponent(data.addres)+'","'+encodeURIComponent(data.tel)+'","'+encodeURIComponent(data.img)+'","'+data.id+'"); style="text-decoration:none;">';
+                            div_str = div_str + '<li><a href=javascript:return_venue("'+data.siteId+'","'+data.productId+'","'+data.isHalf+'","'+encodeURIComponent(data.venueName)+'","'+encodeURIComponent(data.addres)+'","'+encodeURIComponent(data.tel)+'","'+encodeURIComponent(data.img)+'","'+data.id+'","'+data.sportType+'"); style="text-decoration:none;">';
                             // div_str = div_str + '<li><a href=javascript:return_venue("'+ encodeURIComponent(data.img) +'") ; style="text-decoration:none;">';
                             div_str = div_str + '    <div class="preload"';
                             div_str = div_str + '        data-url="'+data.img+'"';

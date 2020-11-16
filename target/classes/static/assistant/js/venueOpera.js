@@ -99,7 +99,7 @@ function timeChoose(obj,times){
 
     $.ajax({
         type : "get",
-        data : {"siteId":siteId,"venueId":venueId,"datee":time,"orderType":half},
+        data : {"site_id":siteId,"venue_id":venueId,"datee":time,"sports_type":half},
         dataType : "json",
         url : base_url+"/getInfoByDateFromDCYumaoqiu", 
 
@@ -336,6 +336,10 @@ function toPendingOrder(){
             flag=true;
         }
     });
+
+
+ 
+
 
     if(flag){
         // window.location=base_url+"/sendOrder?siteNo="+siteNo.join(',')+"&stime="+stime.join(',')
