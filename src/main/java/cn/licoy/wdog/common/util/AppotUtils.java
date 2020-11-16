@@ -35,7 +35,7 @@ public class AppotUtils {
     public static ArrayList get40Days(String datee) throws  Exception{
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         ArrayList result = new ArrayList();
-        for(int i=0;i<=20;i++){
+        for(int i=-60;i<=60;i++){
             ArrayList dee = new ArrayList();
 
             Calendar c = Calendar.getInstance();
@@ -49,10 +49,14 @@ public class AppotUtils {
             Date start = c.getTime();
             String qyt= format.format(start);//前一天
 //            System.out.println(i+"   "+qyt +"  "+getWeek(start) );
-            dee.add(qyt);
-            dee.add(getWeek(start));
 
-            result.add(dee);
+            //过滤 已过去时间
+            if( start.after( DateUtils.addDays( new Date(),-1) ) ){
+                dee.add(qyt);
+                dee.add(getWeek(start));
+                result.add(dee);
+            }
+
         }
         return result;
     }
@@ -74,9 +78,9 @@ public class AppotUtils {
 
 
     public static void main(String[] args) throws  Exception{
-        Body b = new Body();
-        b.setStime("ccccccccccc");
-        System.out.println(ReflectionKit.getMethodValue( b,"stime"));
+//        Body b = new Body();
+//        b.setStime("ccccccccccc");
+//        System.out.println(ReflectionKit.getMethodValue( b,"stime"));
 //        System.out.println( getWeek ( new Date()));
 //        String s1 =  DateFormatUtils.format(new Date() ,"YYYY-MM-dd");
 //        String s2 = DateFormatUtils.format(DateUtils.addDays(new Date() ,-3) ,"YYYY-MM-dd");
@@ -95,5 +99,7 @@ public class AppotUtils {
 //
 //        System.out.println(Encrypt.base64Decode(x));
 //        System.out.println(Encrypt.base64Decode(y));
+
+        System.out.println( get40Days("2020-12-10"));
     }
 }
