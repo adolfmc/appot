@@ -19,21 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="前端页面升级V1.0.1(html 拆分成多个模块页面）">
+    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="1 添加user 页面">
       <change beforePath="$PROJECT_DIR$/appot.iws" beforeDir="false" afterPath="$PROJECT_DIR$/appot.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assistant/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assistant/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/home copy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/home_bk.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/left.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/order_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/site.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/site.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/user_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/user_edit.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,7 +400,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605543703285</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1修复订单列表支付跳转&#10;2订单添加加入venuename">
+      <created>1605578321169</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605578321169</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1 添加user 页面">
+      <created>1605597993544</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605597993544</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -445,7 +447,9 @@
     <MESSAGE value="1修复查询显示当天日期&#10;2订单明细显示venueid" />
     <MESSAGE value="保存客户执行经纬度数据" />
     <MESSAGE value="前端页面升级V1.0.1(html 拆分成多个模块页面）" />
-    <option name="LAST_COMMIT_MESSAGE" value="前端页面升级V1.0.1(html 拆分成多个模块页面）" />
+    <MESSAGE value="1修复订单列表支付跳转&#10;2订单添加加入venuename" />
+    <MESSAGE value="1 添加user 页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 添加user 页面" />
   </component>
   <component name="VssConfiguration">
     <CheckoutOptions>
