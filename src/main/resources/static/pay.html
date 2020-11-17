@@ -111,7 +111,7 @@
                                     alt=""></span>
                             <div class="">
                                 <p class="order-venue-i"><span id ="span_amount_">￥75.0</span></p>
-                                <p class="order-venue-n"><span>DC羽毛球馆(YONEX徐泾馆）</span></p>
+                                <p class="order-venue-n"><span id="order_venue_name_">DC羽毛球馆(YONEX徐泾馆）</span></p>
                             </div>
                         </div>
                         <div class=""><img src="" alt=""></div>
@@ -168,8 +168,7 @@
                 }
                 if(surplusTimes<=0){
                     console.log('时间到！');
-                    //window.location="/app/order/myorder.action?venueId="+$("input[name='venueId']").val();
-                    //clearInterval(countdowns);
+                    window.location.href="./order_list.html";
                 }
             },1000);
         }
@@ -180,10 +179,15 @@
             $('#orderId').val(orderId);
             $('#createDate').val(createDate);
             var amount_=getUrlParam('amount_');
+            
+            var order_venue_name_=getUrlParam('order_venue_name_');
+                order_venue_name_ = decodeURIComponent( decodeURIComponent(order_venue_name_));
+
 
             $("#amount_").val(amount_);
             $("#span_amount_").html('￥'+amount_) ;
             $("#confrom_amount_").html('确认支付'+amount_+'元') ;
+            $('#order_venue_name_').html(order_venue_name_);
         }
 
         //支付类型选择

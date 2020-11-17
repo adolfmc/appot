@@ -161,7 +161,7 @@
                         li_str=li_str+'            </div>';
                         li_str=li_str+'            <div class="order-detail">';
                         li_str=li_str+'                <div class="order-name">';
-                        li_str=li_str+'                    <a href=javascript:show_order_details("'+order.id+'")> DC 羽毛球徐泾馆预订</a>';
+                        li_str=li_str+'                    <a href=javascript:show_order_details("'+order.id+'")> '+order.venueName+'</a>';
                         li_str=li_str+'                </div>';
                         li_str=li_str+'                <div class="order-num">数量：'+order.numbers+'</div>';
                         li_str=li_str+'                <div class="order-pro">总价：'+order.totalAmount+'.0</div>';
@@ -200,6 +200,20 @@
             
         }
 
+        function pay_order(order_id){
+            $.ajax({
+                type : "POST"
+                ,data:{ "orderid":order_id}
+                ,url:base_url+"/getOrderById"
+                ,success:function(result) {
+                    var venueName = result.data.venueName;
+                    var createDate = result.data.createDate;
+                    var amount_ = result.data.totalAmount;
+                    window.location.href="./pay.html?orderId="+order_id+"&createDate="+formatDate(createDate)+"&amount_="+amount_+"&order_venue_name_="+encodeURIComponent( encodeURIComponent (venueName))
+                }
+            });
+            
+        }
        
         function show_order_details(order_id){
             window.location.href="./order_detail.html?order_id="+order_id

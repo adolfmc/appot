@@ -198,10 +198,20 @@
 
         $(function () {
             init();//初始化
-
-            
+            loadding_venue();//加载场馆信息
         });
 
+        function loadding_venue(){
+            $.ajax({
+                type : "POST"
+                ,data:{ "id":getUrlParam('venueId')}
+                ,url:base_url+"/getVenueById"
+                ,success:function(result) {
+                    var venueName = result.data.venueName;
+                    $('#order_venue_name_').html(venueName );
+                }
+            });
+        }
 
         // 提交交易订单
         function to_pay_order(){
@@ -227,7 +237,8 @@
                     productId:productId,
                     isHalf:ishalf,
                     openId:storage['openId'],
-                    mobile:storage['mobile']
+                    mobile:storage['mobile'],
+                    venueName:$('#order_venue_name_').html()
                     }
                 ,url:base_url+"/sendOrder"
                 ,success:function(result) {
@@ -236,9 +247,8 @@
                     $('#createDate').val(  formatDate(createDate)  );
                     $('#orderId').val(orderId);
                     var amount_=getUrlParam('amount_');
-
-                    window.location.href="./pay.html?orderId="+orderId+"&createDate="+formatDate(createDate)+"&amount_="+amount_
-                    
+                    var order_venue_name_ = $('#order_venue_name_').html();
+                    window.location.href="./pay.html?orderId="+orderId+"&createDate="+formatDate(createDate)+"&amount_="+amount_+"&order_venue_name_="+encodeURIComponent( encodeURIComponent (order_venue_name_))
                 }
             });
         }
