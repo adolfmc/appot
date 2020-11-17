@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--微信浏览器缓存清理-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Metro 4 -->
+    <link rel="stylesheet" href="./v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="./v4/css/metro.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="./v4/css/metro-icons.min.css">
+    <script src="./v4/js/metro.min.js"></script>
+    <link href="./assistant/css/base.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/style.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.min.css" rel="stylesheet">
+    <link href="./assistant/css/swiper.css" rel="stylesheet">
+    <link href="./assistant/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./assistant/css/home_list.css" type="text/css" rel="stylesheet">
+
+    <script src="./assistant/js/jquery.js"></script>
+    <script src="./assistant/js/jquery.excoloSlider.js"></script>
+    <link href="./assistant/css/jquery.excoloSlider.css" rel="stylesheet">
+
+    <script src="./assistant/js/swiper.min.js"></script>
+    <script src="./assistant/js/swiper.js"></script>
+    <script src="./assistant/js/layer/layer.js"></script>
+    <script src="./assistant/js/tools.js?v=Math.random()"></script>
+    <script src="./assistant/js/home.js?v=Math.random()"></script>
+    <script src="./assistant/js/venueOpera.js?v=Math.random()"></script>
+    <!-- <script src="./assistant/js/jweixin-1.6.0.js"></script> -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100%;">
+            <!-- 左侧面菜单 -->
+            <aside class="sidebar pos-absolute z-2" data-role="sidebar" data-toggle="#sidebar-toggle-4" id="sb4" data-shift=".shifted-content-2" data-static-shift=".shifted-content-2" data-static="md">
+                <div class="sidebar-header" data-image="./v4/images/sb-bg-1.jpg">
+                    <div class="avatar">
+                        <img data-role="gravatar" data-email="sergey@pimenov.com.ua" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" />
+                    </div>
+                    <span class="title fg-white" id='left_list_id'> Automatic appointment 
+                        <div style="font-size: 1rem;margin-top: 1.3rem;font-weight: 600;">(自动预约SAAS平台）</div>
+                    </span>
+                    <span class="subtitle fg-white"> 2019 © Yushang Sci. & Tech by mc</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="./home.html"><span class="mif-home icon"></span><div style="margin-top: .4rem;">主页</div></a></li>
+                    <li><a onclick="ck_product()"><span class="mif-books icon"></span>预约</a></li>
+                    <li><a href="./order_list.html"><span class="mif-files-empty icon"></span>历史</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./user.html"><span class="mif-images icon"></span>我的</a></li>
+                </ul>
+            </aside>
+        <!--  内容 START MAIN 面板  -->
+        <div class="shifted-content-2 h-100 p-ab" style="background: #f9f9f6;">
+            <!-- 标题 -->
+            <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+                <div>
+                    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+                        <span class="mif-menu fg-white"></span>
+                        <!-- <span id="span_pid" style="width:350px;font-size:1.3rem;color: white;">首页</span> -->
+                    </button>
+                </div>
+                
+                <div class="search">
+                    <input type="text" placeholder="请输入场馆名、地址、区域" name="" id="" />
+                    <button ><i>搜索</i></button>
+                </div>
+
+            </div>
+
+   
+
+            <!--  提交订单 -->
+            <div id="id_user" style="display:''">
+                <div class="venue_Top">
+                    <div>
+                        <div><img id="user_img" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132" alt="" class="v-user-header"></div>
+                        <div class="v-edit-head"><a href="./user_edit.html">编辑</a></div>
+                        <div style="margin-left: 43%;margin-top: 10px;" >15021008580</div>
+                    </div>
+                </div>
+
+                <div class="v-gap"></div>
+
+                <div class="v-fun-item">
+                    <div class="v-item" id="myOrder"><a href="javascript:void(0);"><i class="fa fa-file-text-o"></i>我的订单</a></div>
+                </div>
+                
+                <div style="height: 500px;"></div>
+            <!--  内容 END  -->
+        </div>
+    </div>
+
+
+    <!-- Metro 4 -->
+    <script>
+
+
+        function init(){
+            
+            
+        }
+
+
+        $(function () {
+            init();//初始化
+        });
+
+        function loadding_venue(){
+            $.ajax({
+                type : "POST"
+                ,data:{ "id":getUrlParam('venueId')}
+                ,url:base_url+"/getVenueById"
+                ,success:function(result) {
+                    var venueName = result.data.venueName;
+                    $('#order_venue_name_').html(venueName );
+                }
+            });
+        }
+
+       
+    </script>
+</body>
+
+</html>

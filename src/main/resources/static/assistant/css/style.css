@@ -1511,15 +1511,16 @@ a, button, fieldset, input, span, textarea, ul {
     width: 64px;
     height: 64px;
     border-radius: 64px;
-    position: absolute;
+    /* position: absolute; */
     left: 50%;
-    margin-left: -32px;
-    top: 24px;
-    border:1px solid #f2f2f2;
+    margin-left: 45%;
+    /* top: 24px; */
+    border: 1px solid #f2f2f2;
 }
 .v-edit-head{
     position:absolute;
     right:15px;
+    margin-top: -65px;
 }
 .v-item-n{
     padding:15px;
