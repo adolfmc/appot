@@ -5,8 +5,10 @@ package cn.licoy.wdog.core.controller.wxpay; /**
 import cn.licoy.wdog.common.bean.ResponseCode;
 import cn.licoy.wdog.common.bean.ResponseResult;
 import cn.licoy.wdog.common.controller.AppotBaseController;
+import cn.licoy.wdog.common.util.AppotUtils;
 import cn.licoy.wdog.common.util.Encrypt;
 import cn.licoy.wdog.core.entity.appot.Order;
+import cn.licoy.wdog.core.entity.appot.WechatUser;
 import cn.licoy.wdog.core.service.appot.OrderService;
 import cn.licoy.wdog.core.service.appot.WechatUserService;
 import com.alibaba.fastjson.JSONObject;
@@ -65,7 +67,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     // 商户key
     final static String PATERNER_KEY = "u7yhlCsbYNAoH957ufvV1aujEou3Nh46";//商户key(财务)
     // 微信通知的URL
-    final static String W_NOTIFY_URL = "http://www.yushangcc.com/wxpay/pay_notify.do";
+    final String W_NOTIFY_URL = base_url+"/wxpay/pay_notify.do";
     // 获取openID的URL(微信)
     final static String GETOPENID_URL = "https://api.weixin.qq.com/sns/oauth2/access_token";
     // 获取预付款ID的URL(微信)
@@ -73,6 +75,8 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     // 获取用户信息URL
     final static String GETUSERINFO_URL = "https://api.weixin.qq.com/sns/userinfo";
     public String paternerKey="u7yhlCsbYNAoH957ufvV1aujEou3Nh46";
+
+
 
     /**
      * 第一步:获取access_token(需要在服务器上 )
@@ -201,16 +205,15 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
 
     @RequestMapping("getWechatUser.do")
     public void getWechatUser(HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap) throws  Exception{
-        String getOpenIdparam= "appid="+APPID+"&secret="+SECRET+"&code="+code+"&grant_type=authorization_code";
-        String getOpenIdUrl = GETOPENID_URL+"?"+getOpenIdparam;
-        System.out.println("***getOpenId:"+getOpenIdUrl);
+        String mobile = getMobile(request) ;
+
         RestTemplate rest = new RestTemplate();
         rest.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
-        String resString = rest.getForObject(new URI(getOpenIdUrl), String.class);
-        JSONObject opidJsonObject = JSONObject.parseObject(resString);
-        System.out.println("***opidJsonObject:"+opidJsonObject);
-        String openid = opidJsonObject.get("openid").toString();//获取到了openid
-        String access_token = opidJsonObject.get("access_token").toString();//获取到了access_token
+
+        Map<String,String> token_oppenId = getTokenOppenId(code,mobile,APPID,SECRET);
+        String openid = token_oppenId.get(AppotUtils.WX_OPPENID_KEY);
+        String access_token = token_oppenId.get(AppotUtils.WX_TOKEN_KEY);
+
 
         // 获取用户信息
 //            https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
@@ -235,30 +238,58 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
      * @throws Exception
      */
     @RequestMapping("pay.do")
-    public void order( HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap,String order_id) throws  Exception{
+    public void order( HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap,String order_id,String mobile) throws  Exception{
+        System.out.println("================== mobile = "+mobile);
+        //1 获取微信支付Token & OpenId
+        Map<String,String> token_oppenId = getTokenOppenId(code,mobile,APPID,SECRET);
+        String openid = token_oppenId.get(AppotUtils.WX_OPPENID_KEY);
+        String access_token = token_oppenId.get(AppotUtils.WX_TOKEN_KEY);
+
+        // 2 统一下单 接口（微信支付前 调用预付统一下单接口 拿到 prepay_id 预付ID)
+        String prepay_id =getPrePayIdFromTYOrder(order_id,request, openid ,access_token ,retMap);//预支付id
+
+        //3 JSAPI调起支付 参数准备
+        String noncestr = WXH5PayController.getRandomString(32);//随机字符串
+        String timestamp = String.valueOf(System.currentTimeMillis() / 1000);//时间戳
+        Map<String, String> packageParams = new HashMap<String, String>();
+        packageParams.put("appId", APPID);
+        packageParams.put("timeStamp", timestamp);
+        packageParams.put("nonceStr", noncestr);
+        packageParams.put("package", "prepay_id=" + prepay_id);
+        packageParams.put("signType", "MD5");
+        String packageSign = com.jfinal.weixin.sdk.kit.PaymentKit.createSign(packageParams, paternerKey);
+        packageParams.put("paySign", packageSign);
+        String jsonStr = null;
+        jsonStr = JsonUtils.toJson(packageParams);
+        System.out.println(jsonStr);
+        System.out.println(">>>codeDemo.html");
+
+        response.sendRedirect(base_url+"/#/pages/pay/wxpayh5?jsonStr="+jsonStr);
+
+    }
+
+    /**
+     * 统一下单 接口（微信支付前 调用预付统一下单接口 拿到 prepay_id 预付ID)
+     * @param order
+     * @param request
+     * @param openid
+     * @param access_token
+     * @param retMap
+     * @return
+     */
+    public String getPrePayIdFromTYOrder(String order_id,HttpServletRequest request, String openid ,String access_token ,ModelMap retMap){
         Order order = orderService.selectById(order_id);
         String total_fee = Double.valueOf(Math.random()*1000+"").toString().substring(0,2);
-               total_fee = order.getTotalAmount().intValue()+"";
+        total_fee = order.getTotalAmount().intValue()+"";
+        System.out.println("***WxPayController.order(),total_fee = "+total_fee+" ,order_id = "+order.getId());
+        String orderNo = order.getId();// 生成订单id
 
-        System.out.println("***WxPayController.order(),total_fee = "+total_fee+" ,order_id = "+order_id);
-
-        Map<String, String> packageParams = new HashMap<String, String>();
-        String prepay_id = "";//预支付id
-
-        String orderNo = order_id;// 生成订单id
-        String getOpenIdparam= "appid="+APPID+"&secret="+SECRET+"&code="+code+"&grant_type=authorization_code";
-        String getOpenIdUrl = GETOPENID_URL+"?"+getOpenIdparam;
-        System.out.println("***getOpenId:"+getOpenIdUrl);
         RestTemplate rest = new RestTemplate();
         rest.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
-
+        String jsonStr = null ;
+        String prepay_id = null;
         try {
 
-            String resString = rest.getForObject(new URI(getOpenIdUrl), String.class);
-            JSONObject opidJsonObject = JSONObject.parseObject(resString);
-            System.out.println("***opidJsonObject:"+opidJsonObject);
-            String openid = opidJsonObject.get("openid").toString();//获取到了openid
-            String access_token = opidJsonObject.get("access_token").toString();//获取到了access_token
             Map<String, String> paramMap = new HashMap<String, String>();
             paramMap.put("appid", APPID);            //公众账号ID
             paramMap.put("mch_id", MATCH_ID);             //商户号
@@ -269,27 +300,19 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
             paramMap.put("spbill_create_ip", getIpAddress(request));//终端IP
             paramMap.put("notify_url", W_NOTIFY_URL);        //通知地址
             paramMap.put("trade_type", "JSAPI");    //交易类型
+            paramMap.put("sign_type", "MD5");    //签名类型
             paramMap.put("openid", openid);
             paramMap.put("sign", PaymentKit.createSign( paramMap, PATERNER_KEY));
 
-
-
             // 获取用户信息
-//            https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
-            String userInfoString = rest.getForObject(new URI(GETUSERINFO_URL+"?access_token="+access_token+"&openid="+ openid+"&lang=zh_CN"), String.class);
-            JSONObject userInfoJsonObject = JSONObject.parseObject(userInfoString);
-            System.out.println("***userInfoJsonObject:"+userInfoJsonObject);
-            wechatUserService.saveWechatUser(userInfoJsonObject);
-
+            String mobile = order.getMobile();
+            getWXUserInfo(rest,access_token,openid,mobile);
 
             String mapToXml =PaymentKit.toXml(paramMap);
-
             System.out.println(mapToXml);
             System.out.println("----------------------------------------------------------");
             String postForObject = rest.postForObject(new URI(UNIFIEDORDER_URL), mapToXml, String.class);
             System.out.println("***postForObject:"+postForObject);
-
-
 
             //支付成功，待消费状态
             if (postForObject.indexOf("SUCCESS") != -1) {
@@ -301,43 +324,59 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
                 order.setStatus("3");
             }
 
-            packageParams.put("appId", APPID);
-            packageParams.put("timeStamp", System.currentTimeMillis() / 1000 + "");
-            packageParams.put("nonceStr", System.currentTimeMillis() + "");
-            packageParams.put("package", "prepay_id=" + prepay_id);
-            packageParams.put("signType", "MD5");
-            String packageSign = com.jfinal.weixin.sdk.kit.PaymentKit.createSign(packageParams, paternerKey);
-            packageParams.put("paySign", packageSign);
-
-            String jsonStr = JsonUtils.toJson(packageParams);
-            System.out.println(jsonStr);
-
             //保存订单
-            order.setTradeNo(order_id);
+            order.setTradeNo(order.getId());
             order.setOpenid(openid);
             order.setNonceStr(paramMap.get("nonce_str"));
             order.setSpbillCreateIp(  paramMap.get("spbill_create_ip" ));
             order.setTradeType(  paramMap.get("trade_type" ));
-
             //order.setTotalAmount( new BigDecimal( total_fee ).divide(new BigDecimal(100) ,2, BigDecimal.ROUND_HALF_UP) );
             order.setCreateDate(new Date());
             orderService.updateById(order);
-
-
         } catch (Exception e) {
             retMap.put("code", "500");
             retMap.put("msg", e.getStackTrace());
             e.printStackTrace();
         }
-        String timeStamp=packageParams.get("timeStamp") ;
-        String paySign=packageParams.get("paySign") ;
-        String appId=APPID;
-        String nonceStr=packageParams.get("nonceStr") ;
-        System.out.println(">>>codeDemo.html");
-        response.sendRedirect("http://www.yushangcc.com/static/wxpay.html?timeStamp="+timeStamp+"&package_="+prepay_id+"&paySign="+paySign+"&appId="+appId+"&nonceStr="+nonceStr);
 
+        return prepay_id;
     }
 
+
+    public void getWXUserInfo(RestTemplate rest,String access_token ,String openid,String mobile) throws  Exception{
+        //https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
+        String userInfoString = rest.getForObject(new URI(GETUSERINFO_URL+"?access_token="+access_token+"&openid="+ openid+"&lang=zh_CN"), String.class);
+        JSONObject userInfoJsonObject = JSONObject.parseObject(userInfoString);
+        String country = String.valueOf(userInfoJsonObject.get("country"));
+        String province = String.valueOf(userInfoJsonObject.get("province"));
+        String city = String.valueOf(userInfoJsonObject.get("city"));
+        String sex = String.valueOf(userInfoJsonObject.get("sex"));
+        String nickname = String.valueOf(userInfoJsonObject.get("nickname"));
+        String language = String.valueOf(userInfoJsonObject.get("language"));
+        String headimgurl = String.valueOf(userInfoJsonObject.get("headimgurl"));
+        String privilege  = String.valueOf(userInfoJsonObject.get("privilege"));
+//        ***userInfoJsonObject:{"country":"泽西岛","province":"","city":"","openid":"o21Tg5gcRWoqpNLzPmRZWU2buwvM","sex":1,"nickname":"mc","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKYPpOWCGE1Mib6CcLpt7qaKBdbooPcicBxSTbNric5O9Nibticx8XibgwkrXlwtPGv7icwSf2GH95sG5KibA/132","language":"zh_CN","privilege":[]}
+        System.out.println("***userInfoJsonObject:"+userInfoJsonObject);
+
+        WechatUser wechatUser = wechatUserService.getWechatUserByMobile(mobile);
+        if(wechatUser.getNickname()==null || "".equals("")){
+            wechatUser.setCity(city);
+            wechatUser.setCountry(country);
+            wechatUser.setHeadimgurl(headimgurl);
+            wechatUser.setLanguage(language);
+            wechatUser.setNickname(nickname);
+            wechatUser.setOpenid(openid);
+            wechatUser.setProvince(province);
+            try{
+                wechatUser.setSex( Integer.valueOf(sex)==1?"男":"女");
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+
+            wechatUser.setPrivilege(privilege);
+            wechatUserService.insertOrUpdate(wechatUser);
+        }
+    }
 
     /**
      * 微信异步回调通知

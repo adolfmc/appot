@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>View Code</title>
+<script type="text/javascript">
+
+</script>
+</head>
+<style type="text/css">
+
+</style>
+<body style="text-align:center;-webkit-user-select:none;" onmousemove="mousemove(event)" >
+<div>
+    <div style="height: 1000px;width: 1200px;border-style: solid; border-width: 1px 1px 1px 1px;border-color: grey;float: left;">
+        main
+        <div id="c1" style="height: 50%;width: 50%;border-style: solid; border-width: 1px 1px 1px 1px;border-color: grey;float: left; margin-top: 10px;margin-left: 10px;">C1</div>
+
+
+        <div id="c2" style="height: 30px;width: 100px;border-style: solid; border-width: 1px 1px 1px 1px;border-color: grey;float: left; margin-top: 10px;margin-left: 10px;">C2</div>
+
+        <div id="c3" style="height: 30px;width: 100px;border-style: solid; border-width: 1px 1px 1px 1px;border-color: grey;float: left; margin-top: 10px;margin-left: 10px;">C3</div>
+    </div>
+    <div style="height: 1000px;width: 600px;float: right; border-style: solid; border-width: 1px 1px 1px 1px;border-color: grey;">
+        tools
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+var cc = [];
+var start_obj_id;
+var end_obj_id;
+
+function mousemove(e){
+    e = e || window.event;
+    if(e.pageX || e.pageY) {
+        movex = e.pageX;
+        movey = e.pageY
+        // console.log(movex,movey)
+        // for(var i=0;i<cc.length;i++){
+        //     var o = cc[i];
+        //     var id = o[0]
+        //     var x = o[1][0]['x']
+        //     var y = o[1][0]['y']
+        //     var xmax = o[1][0]['xmax']
+        //     var ymax = o[1][0]['ymax']
+
+        //     if(movex>=x && movex<=xmax &&  movey>=y && movey<= ymax){
+        //         start_obj_id = id ;
+        //     }else{
+        //         start_obj_id = null;
+        //     }
+        // }
+    }
+}
+
+
+
+
+
+function getXY(obj){
+    var x = 0,y = 0;
+    if (obj.getBoundingClientRect) {
+        var box = obj.getBoundingClientRect();
+        var D = document.documentElement;
+        x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;
+        y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;
+        xmax=box.width+x;
+        ymax=box.height+y;
+    }
+    else{
+        for (; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent) {}
+        }
+        return {
+        x: x,
+        y: y,
+        xmax:xmax,
+        ymax:ymax
+    }
+}
+
+    function start (e){
+        console.log('start',e,e['clientX'],e['clientY'])
+        var v = getObjId(e);
+        // if (v!=null )
+        console.log( v )
+        start_obj_id = v ;
+    }
+        
+    function move (e){
+        // console.log('move')
+        
+    }
+        
+    function end(e){
+        freashXY();
+        console.log('end',e,e['clientX'],e['clientY'])
+        var v = getObjId(e);
+        if (v!=null )
+        console.log( v )
+        end_obj_id = v;
+
+
+        console.log('start_obj_id = ',start_obj_id,'end_obj_id=',end_obj_id)
+
+        var endObje = document.getElementById(end_obj_id) ;
+        var startObje = document.getElementById(start_obj_id);
+        if(end_obj_id!=null && (end_obj_id!=start_obj_id) ){
+            xrdom(startObje,endObje)
+        }else if(start_obj_id!=null){
+            // startObje.offsetHeight=parseInt(e['clientY'])+'px';
+            // startObje.offsetWidth=parseInt(e['clientX'])+'px';
+            startObje.style.height=parseInt(e['clientY'])+'px';
+            startObje.style.width=parseInt(e['clientX'])+'px';
+        }
+        
+        freashXY();
+    }
+
+    function getObjId(e){
+        if(e.pageX || e.pageY) {
+            movex = e.pageX;
+            movey = e.pageY
+            // console.log(movex,movey)
+            for(var i=0;i<cc.length;i++){
+                var o = cc[i];
+                var id = o[0]
+                var x = o[1][0]['x']
+                var y = o[1][0]['y']
+                var xmax = o[1][0]['xmax']
+                var ymax = o[1][0]['ymax']
+
+                if(movex>=x && movex<=xmax &&  movey>=y && movey<= ymax){
+                    return id;
+                }else{
+                    null;
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+
+    function xrdom(startObje,endObje){
+        endObje.appendChild(  startObje.cloneNode(true) )
+    }
+
+
+
+    function freashXY(){
+        var c1 = document.getElementById('c1')
+        var c2 = document.getElementById('c2')
+        var c3 = document.getElementById('c3')
+
+        cc.push([['c1'] , [getXY(c1)] ])
+        cc.push([['c2'] , [getXY(c2)] ])
+        cc.push([['c3'] , [getXY(c3)] ])
+    }
+
+//监听鼠标事件
+document.addEventListener("mousedown", start, true);
+document.addEventListener("mousemove", move, true);
+document.addEventListener("mouseup", end, true);
+</script>

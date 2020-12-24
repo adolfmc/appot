@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.mapper.appot;import cn.licoy.wdog.core.entity.appot.User2;import com.baomidou.mybatisplus.mapper.BaseMapper;import org.apache.ibatis.annotations.Mapper;import org.springframework.stereotype.Repository;/** * @author mc * @version Tue Dec 22 22:00:21 2020 */@Mapper@Repositorypublic interface User2Mapper extends BaseMapper<User2> {}

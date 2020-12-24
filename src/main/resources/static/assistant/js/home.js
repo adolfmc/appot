@@ -1,4 +1,4 @@
-var base_url="http://www.yushangcc.com" ;
+var base_url="https://www.yushangcc.com" ;
 var base_url="http://127.0.0.1" ;
 
 var storage=window.localStorage;

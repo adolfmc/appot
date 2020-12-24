@@ -1,0 +1,230 @@
+View Code 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+/*************************************************c插件定义部分******************************************************/
+var Drag = (function () {
+    var opts={container:"",drag_items:"",state:"outer" ,setContainerStyle:true ,moveInto:function(){},moveOut:function(){},endInto:function(){}},//默认参数,全局的  state:inner outer center 标示拖拽对象是碰触目标触发还是完全进入目标再触发
+        curDrag,
+        //以下为私有方法
+        getPosition=function(elem){
+            if ( !elem ) return {left:0, top:0};  
+            var top = 0, left = 0;  
+            if ( "getBoundingClientRect" in document.documentElement ){  
+                //jquery方法  
+                var box = elem.getBoundingClientRect(),   
+                doc = elem.ownerDocument,   
+                body = doc.body,   
+                docElem = doc.documentElement,  
+                clientTop = docElem.clientTop || body.clientTop || 0,   
+                clientLeft = docElem.clientLeft || body.clientLeft || 0,  
+                top  = box.top  + (self.pageYOffset || docElem && docElem.scrollTop  || body.scrollTop ) - clientTop,  
+                left = box.left + (self.pageXOffset || docElem && docElem.scrollLeft || body.scrollLeft) - clientLeft;  
+            }else{  
+                do{  
+                    top += elem.offsetTop || 0;  
+                    left += elem.offsetLeft || 0;  
+                    elem = elem.offsetParent;  
+                } while (elem);  
+          }  
+            return {left:left, top:top};      
+        },
+        
+        isJoinToBox=function(curDrag){
+            var extendX,
+                extendY,
+                drag_left = parseInt(curDrag.style.left),
+                drag_top = parseInt(curDrag.style.top),
+                box_position = getPosition(opts.container),
+                box_top = box_position.top,
+                box_left = box_position.left,
+                box_bottom = opts.container.offsetHeight + box_top,
+                box_right = opts.container.offsetWidth + box_left;
+                
+                
+            switch(opts.state)
+            {
+                case "outer":
+                            extendX = curDrag.offsetWidth;
+                            extendY = curDrag.offsetHeight;                           
+                            break;
+                case "inner":
+                            extendX=0;
+                            extendY=0;
+                            break;
+                case "center":
+                            extendX = parseInt(curDrag.offsetWidth/2);
+                            extendY = parseInt(curDrag.offsetHeight/2);
+                            break;
+                default:
+                            extendX = curDrag.offsetWidth;
+                            extendY = curDrag.offsetHeight;
+                            
+            }
+            return ((drag_left >= box_left-extendX && drag_left <= box_right) &&
+                    (drag_top >= box_top-extendY && drag_top <= box_bottom));
+        },
+        
+        start=function(e){
+            window.getSelection().removeAllRanges();
+            var oldNode = e.target,
+                newNode,
+                top = getPosition(oldNode).top,
+                left = getPosition(oldNode).left;
+                
+            if("true" === oldNode.getAttribute("drag"))
+            {
+                newNode = oldNode.cloneNode(true);
+                newNode.style.cssText = "z-index:1;background:red;position:absolute; top:"+top+"px;left:"+left+"px";
+                oldNode.parentNode.appendChild(newNode);
+                curDrag = newNode;
+            }
+        },
+        
+        move=function(e){
+            window.getSelection ? window.getSelection().removeAllRanges():document.selection.empty();
+            if(curDrag){
+
+                curDrag.style.top = e.pageY + "px";
+                curDrag.style.left = e.pageX + "px";
+                if(opts.setContainerStyle){
+                    if(isJoinToBox(curDrag))
+                    {
+                        opts.moveInto();
+                    }
+                    else{
+                        opts.moveOut();
+                    }
+                }
+            }
+        },
+        
+        end=function(e){
+            window.getSelection ? window.getSelection().removeAllRanges():document.selection.empty();
+            if(curDrag){
+                if(isJoinToBox(curDrag)){
+                    opts.endInto(curDrag.cloneNode(true));
+                }
+                    
+                if(opts.setContainerStyle){
+                    opts.moveOut();
+                }
+                curDrag.parentNode.removeChild(curDrag);
+                curDrag = null;
+            }
+        },
+        
+        touchHandler=function(event){        
+            var touches=event.changedTouches,
+                touchObj=touches[0],
+                type,
+                simulatedEvent ;
+                
+            switch(event.type){
+                case "touchstart":
+                     type="mousedown";
+                     break;
+                case "touchmove":
+                     type="mousemove";
+                     break;     
+                case "touchend":
+                     type="mouseup";
+                     break;
+                default:
+                     return;
+            
+            }
+            simulatedEvent=document.createEvent("MouseEvent");
+            simulatedEvent.initMouseEventype(type, true, true, window, 1,
+                                            first.screenX,first.screenY,
+                                            first.clientX, first.clientY,
+                                            false,false, false, false, 0, null); 
+            
+            touchObj.target.dispathEvent(simulatedEvent);
+            event.preventDefault();
+        },
+        
+        init=function (option) { 
+            for(prop in option) opts[prop]=option[prop];
+            //alert(opts.container);
+            //初始化事件
+                //如果是移动设备，我们就用事件模拟触发鼠标事件
+                opts.drag_items.addEventListener("touchstart", touchHandler, true);
+                opts.drag_items.addEventListener("touchmove", touchHandler, true);
+                opts.drag_items.addEventListener("touchend", touchHandler, true);
+            //监听鼠标事件
+            opts.drag_items.addEventListener("mousedown", start, true);
+            document.addEventListener("mousemove", move, true);
+            document.addEventListener("mouseup", end, true);
+               
+        };
+    // 暴露公开的成员
+    return{
+        init: init        
+    }
+}());
+
+
+
+
+
+</script>
+</head>
+<style type="text/css">
+span{display:block; width:50px; height:50px; background:#dedede; border:1px solid #333; float:left}
+#container{margin:auto;padding:10px;background:#dedede; width:380px; height:150px; border:5px solid #777; }
+#container li{width:50px; height:50px; border:1px dashed #777; float:left; margin:10px 0 0 10px; list-style-type:none;}
+#dragItems{margin:auto; width:480px;}
+</style>
+<body style="text-align:center;-webkit-user-select:none;">
+将以下小方格拖入上面的容器内：<br />
+注： id="dragItems"下面的子元素设置 drag="true"属性的才可以拖动<br /><br /><br />
+<ul id="container">
+    <li></li><li></li><li></li><li></li><li></li><li></li>
+    <li></li><li></li><li></li><li></li><li></li><li></li>
+</ul>
+<br />
+<br />
+<br />
+<br />
+<div id="dragItems"><span drag="true">111</span><span drag="true">222</span><span drag="true">333</span><span drag="true">444</span><span drag="true">555</span><span drag="true">666</span><span drag="true">777</span><span drag="true">888</span><span drag="true">999</span></div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+//*******************************************************调用部分**************************************************
+
+var c=document.getElementById("container"),//需要拖入的容器id
+    d=document.getElementById("dragItems");//被拖动的元素列表
+Drag.init({
+    container : c,
+    drag_items : d ,
+    state : "outer",//可以设置层outer（拖动元素外边挨着容器就触发），inner(拖动元素全部进入容器才触发)，center （拖动元素一半进入容器时触发） 
+    moveInto : function(){//当元素被拖入容器内时触发（mousemove时鼠标左键按下状态）
+        c.style.border = "5px dashed #ccc";
+    },
+    moveOut : function(){//当元素被拖出容器时触发（mousemove时鼠标左键按下状态）
+        c.style.border = "5px solid #777";
+    },
+    endInto : function(dragEle){//当元素被拖进容器后触发（mouseup 鼠标抬起）
+        var elems=c.getElementsByTagName("li");
+        for(var i=0,len=elems.length; i<len ;i++)
+        {
+            if(elems[i].innerHTML == "")
+            {
+                elems[i].appendChild(dragEle);
+                dragEle.style.position="";
+                break;
+            }
+            if(i == len-1) alert("fulled");
+        }
+    }
+});
+
+</script>

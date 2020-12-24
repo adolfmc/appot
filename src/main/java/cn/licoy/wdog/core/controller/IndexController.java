@@ -25,7 +25,7 @@ public class IndexController extends AppotBaseController {
     @RequestMapping(value ="",method = {RequestMethod.POST, RequestMethod.GET})
     public void wapPay(HttpServletRequest request, HttpServletResponse response){
         try {
-            response.sendRedirect(base_url+"/static/home.html");
+            response.sendRedirect(base_url+"/static/index.html");
         } catch (IOException e) {
             e.printStackTrace();
         }

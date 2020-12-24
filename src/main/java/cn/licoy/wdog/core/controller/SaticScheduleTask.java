@@ -53,6 +53,25 @@ public class SaticScheduleTask {
                 service.updateById(order);
             }
         }
-
     }
+
+
+//    //3.添加定时任务
+//    @Scheduled(cron = "0 0/5 * * * ?")
+//    //或直接指定时间间隔，例如：5秒
+//    //@Scheduled(fixedRate=5000)
+//    private void checkOverdueOrder() throws  Exception{
+//        List<Order> orders = service.getOrdersByStatus("2");
+//        for(Order order :orders){
+//
+//            String s1 =  DateFormatUtils.format(new Date() ,"YYYY-MM-dd");
+//            String s2 = order.getAppotDate();
+//
+//            if(  DateUtils.parseDate( s2 ,new String[]{"yyyy-MM-dd"}).before(  DateUtils.parseDate( s1 ,new String[]{"yyyy-MM-dd"})   )  ){
+//                //支付失效
+//                order.setStatus("4");
+//                service.updateById(order);
+//            }
+//        }
+//    }
 }

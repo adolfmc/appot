@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "endTime",
     "isGroup"
 })
-public class BookPriceInfo {
+public class BookPriceInfo implements Cloneable{
 
     @JsonProperty("bookStatus")
     private Integer bookStatus;
@@ -152,4 +152,14 @@ public class BookPriceInfo {
         return (((((((this.bookStatus == rhs.bookStatus)||((this.bookStatus!= null)&&this.bookStatus.equals(rhs.bookStatus)))&&((this.salePrice == rhs.salePrice)||((this.salePrice!= null)&&this.salePrice.equals(rhs.salePrice))))&&((this.beginTime == rhs.beginTime)||((this.beginTime!= null)&&this.beginTime.equals(rhs.beginTime))))&&((this.endTime == rhs.endTime)||((this.endTime!= null)&&this.endTime.equals(rhs.endTime))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.isGroup == rhs.isGroup)||((this.isGroup!= null)&&this.isGroup.equals(rhs.isGroup))));
     }
 
+    @Override
+    public BookPriceInfo clone() {
+        BookPriceInfo person = null;
+        try {
+            person = (BookPriceInfo) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return person;
+    }
 }

@@ -1,6 +1,7 @@
 package cn.licoy.wdog.core.controller.wxpay;
 
 
+import cn.licoy.wdog.common.controller.AppotBaseController;
 import cn.licoy.wdog.core.entity.adtea.OrderTea;
 import cn.licoy.wdog.core.service.adtea.OrderTeaService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -26,9 +27,8 @@ import java.util.*;
 
 
 @RestController
-//@RequestMapping("/wxpay")
 @Api
-public class WXH5PayController {
+public class WXH5PayController extends AppotBaseController {
 
     @Autowired
     private OrderTeaService orderTeaService;
@@ -46,7 +46,7 @@ public class WXH5PayController {
     @RequestMapping(value ="/pay.do",method = {RequestMethod.POST,RequestMethod.GET})
     public String wapPay(HttpServletRequest request,HttpServletResponse response){
         System.out.println("--pay start--");
-        String notify_url = "http://www.yushangcc.com/wxpay/pay_notify.do";//这是回调地址，方法在下面
+        String notify_url = base_url+"/wxpay/pay_notify.do";//这是回调地址，方法在下面
         //获取ip
 
         String ip = IpKit.getRealIp(request);
@@ -65,7 +65,7 @@ public class WXH5PayController {
         h5_info.setType("Wap");
         //此域名必须在商户平台--"产品中心"--"开发配置"中添加
         log.info("id >> "+ip);
-        h5_info.setWap_url("http://www.yushangcc.com");
+        h5_info.setWap_url("https://www.yushangcc.com");
         h5_info.setWap_name("公司官网");
         sceneInfo.setH5_info(h5_info);
         WxPayApiConfig wxPayApiConfig=getApiConfig();

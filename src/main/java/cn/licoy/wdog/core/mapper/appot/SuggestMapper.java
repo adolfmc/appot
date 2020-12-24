@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.mapper.appot;import cn.licoy.wdog.core.entity.appot.Suggest;import com.baomidou.mybatisplus.mapper.BaseMapper;import org.apache.ibatis.annotations.Mapper;import org.springframework.stereotype.Repository;/** * @author mc * @version Tue Dec 15 23:29:47 2020 */@Mapper@Repositorypublic interface SuggestMapper extends BaseMapper<Suggest> {}
