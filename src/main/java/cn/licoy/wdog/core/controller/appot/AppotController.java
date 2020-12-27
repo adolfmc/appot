@@ -48,6 +48,12 @@ public class AppotController extends AppotBaseController {
         return "JhO2WS095phwvOSc" ;
     }
 
+    @RequestMapping(value = {"/77VoHeFOUA.txt"})
+    @ResponseBody
+    public String MP77VoHeFOUA(HttpServletRequest request, HttpServletResponse response,String datee) throws IOException {
+        return "632acd96596a745885676632e8306a34" ;
+    }
+
 
     @RequestMapping(value = {"/getVerCode"})
     public ResponseResult getVerCode(HttpServletRequest request, HttpServletResponse response, String mobile) throws IOException {

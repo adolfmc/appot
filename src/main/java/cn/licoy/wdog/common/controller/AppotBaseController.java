@@ -17,10 +17,7 @@ import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.rmi.server.ExportException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AppotBaseController {
     public String base_url = "https://www.yushangcc.com";
@@ -60,7 +57,6 @@ public class AppotBaseController {
         return dbCode;
     }
 
-
     // 获取openID的URL(微信)
     final static String GETOPENID_URL = "https://api.weixin.qq.com/sns/oauth2/access_token";
     public Map<String, String> getTokenOppenId(String code, String mobile,String APPID,String SECRET) {
@@ -80,6 +76,53 @@ public class AppotBaseController {
                 System.out.println("***opidJsonObject:" + opidJsonObject);
                 String openid = opidJsonObject.get("openid").toString();//获取到了openid
                 String access_token = opidJsonObject.get("access_token").toString();//获取到了access_token
+
+                setRedisV( mobile + AppotUtils.WX_TOKEN_KEY, access_token, 3600 * 2);
+                setRedisV( mobile + AppotUtils.WX_OPPENID_KEY, openid, 3600 * 1000000);
+
+                token_oppenId.put(AppotUtils.WX_OPPENID_KEY,openid);
+                token_oppenId.put(AppotUtils.WX_TOKEN_KEY,access_token);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }else{
+            System.out.println("WX_TOKEN_KEY 缓存模式.");
+            token_oppenId.put(AppotUtils.WX_OPPENID_KEY,getRedisV(mobile+AppotUtils.WX_OPPENID_KEY));
+            token_oppenId.put(AppotUtils.WX_TOKEN_KEY,getRedisV(mobile+AppotUtils.WX_TOKEN_KEY));
+        }
+
+        return token_oppenId;
+    }
+
+
+
+
+    // 获取openID的URL(微信)
+    final static String GETOPENID_URL_XCX = "https://api.weixin.qq.com/sns/jscode2session";
+    public Map<String, String> getTokenOppenId_XCX(String code, String mobile,String APPID,String SECRET) {
+        Map<String,String> token_oppenId = new HashMap();
+        if(true || getRedisV(mobile+AppotUtils.WX_TOKEN_KEY) ==null || "".equals(getRedisV(mobile+AppotUtils.WX_TOKEN_KEY)) ){
+            System.out.println("WX_TOKEN_KEY 非缓存模式.");
+            String getOpenIdparam= "appid="+APPID+"&secret="+SECRET+"&js_code="+code+"&grant_type=authorization_code";
+            String getOpenIdUrl = GETOPENID_URL_XCX+"?"+getOpenIdparam;
+            System.out.println("***getOpenId:"+getOpenIdUrl);
+            RestTemplate rest = new RestTemplate();
+            rest.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
+            String jsonStr = null ;
+            try {
+
+                String resString = rest.getForObject(new URI(getOpenIdUrl), String.class);
+                JSONObject opidJsonObject = JSONObject.parseObject(resString);
+                System.out.println("***opidJsonObject:" + opidJsonObject);
+                String openid = opidJsonObject.get("openid").toString();//获取到了openid
+                String access_token = opidJsonObject.get("session_key").toString();//获取到了access_token
+
+
+                System.out.println("===============================================2 openid & access_token =============================================================");
+                System.out.println("================== openid = "+openid );
+                System.out.println("================== access_token = "+access_token );
+                System.out.println("===============================================2 openid & access_token =============================================================");
+
 
                 setRedisV( mobile + AppotUtils.WX_TOKEN_KEY, access_token, 3600 * 2);
                 setRedisV( mobile + AppotUtils.WX_OPPENID_KEY, openid, 3600 * 1000000);
@@ -121,6 +164,17 @@ public class AppotBaseController {
         } catch (Exception e) {
         }
         return Collections.emptyList();
+    }
+
+    public  String getRandomString(int length){
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random=new Random();
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString().toUpperCase();
     }
 
 }

@@ -6,7 +6,6 @@ import cn.licoy.wdog.common.bean.ResponseCode;
 import cn.licoy.wdog.common.bean.ResponseResult;
 import cn.licoy.wdog.common.controller.AppotBaseController;
 import cn.licoy.wdog.common.util.AppotUtils;
-import cn.licoy.wdog.common.util.Encrypt;
 import cn.licoy.wdog.core.entity.appot.Order;
 import cn.licoy.wdog.core.entity.appot.WechatUser;
 import cn.licoy.wdog.core.service.appot.OrderService;
@@ -20,7 +19,6 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -33,9 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -51,17 +47,17 @@ import java.util.*;
  */
 @SuppressWarnings("ALL")
 @Controller
-@RequestMapping("wxpay")
-public class WXJSAPIPayController extends AppotBaseController {// 公众号id
+@RequestMapping("wxxcxpay")
+public class WXXCXController extends AppotBaseController {// 公众号id
     @Autowired
     private WechatUserService wechatUserService;
     @Autowired
     private OrderService orderService;
+    // 小程序APPID
+    final static String APPID = "wxd6eb7ceb883aefe3";
+    // 小程序秘钥
+    final static String SECRET = "0c87e6f382d5636c6ffcb7788c14323a";
 
-
-    final static String APPID = "wx98188fbf500bdf33";
-    // 公众号秘钥
-    final static String SECRET = "2649e902a7c54b11dc9e4049716e392a";
     // 商户号
     final static String MATCH_ID = "1602617281"; //商户号(财务)
     // 商户key
@@ -75,6 +71,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     // 获取用户信息URL
     final static String GETUSERINFO_URL = "https://api.weixin.qq.com/sns/userinfo";
     public String paternerKey="u7yhlCsbYNAoH957ufvV1aujEou3Nh46";
+
 
 
     /**
@@ -148,7 +145,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
 
     public static String SHA1(String decript) {
         try {
-            MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
+            MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.update(decript.getBytes());
             byte messageDigest[] = digest.digest();
             // Create Hex String
@@ -209,7 +206,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         RestTemplate rest = new RestTemplate();
         rest.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
 
-        Map<String,String> token_oppenId = getTokenOppenId(code,mobile,APPID,SECRET);
+        Map<String,String> token_oppenId = getTokenOppenId_XCX(code,mobile,APPID,SECRET);
         String openid = token_oppenId.get(AppotUtils.WX_OPPENID_KEY);
         String access_token = token_oppenId.get(AppotUtils.WX_TOKEN_KEY);
 
@@ -237,10 +234,13 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
      * @throws Exception
      */
     @RequestMapping("pay.do")
-    public void order( HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap,String order_id,String mobile) throws  Exception{
+    public ResponseResult order( HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap,String order_id,String mobile) throws  Exception{
         System.out.println("================== mobile = "+mobile);
+        System.out.println("===============================================1 code =============================================================");
+        System.out.println("================== code = "+code);
+        System.out.println("===============================================1 code =============================================================");
         //1 获取微信支付Token & OpenId
-        Map<String,String> token_oppenId = getTokenOppenId(code,mobile,APPID,SECRET);
+        Map<String,String> token_oppenId = getTokenOppenId_XCX(code,mobile,APPID,SECRET);
         String openid = token_oppenId.get(AppotUtils.WX_OPPENID_KEY);
         String access_token = token_oppenId.get(AppotUtils.WX_TOKEN_KEY);
 
@@ -261,9 +261,12 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
         String jsonStr = null;
         jsonStr = JsonUtils.toJson(packageParams);
         System.out.println(jsonStr);
-        System.out.println(">>>codeDemo.html");
 
-        response.sendRedirect(base_url+"/#/pages/pay/wxpayh5?jsonStr="+jsonStr);
+        System.out.println("===============================================4 JSAPI调起支付 =============================================================");
+        System.out.println("================== jsonStr = "+jsonStr);
+        System.out.println("===============================================4 JSAPI调起支付 =============================================================");
+
+        return ResponseResult.e(ResponseCode.OK,packageParams);
 
     }
 
@@ -277,6 +280,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
      * @return
      */
     public String getPrePayIdFromTYOrder(String order_id,HttpServletRequest request, String openid ,String access_token ,ModelMap retMap){
+
         Order order = orderService.selectById(order_id);
         String total_fee = Double.valueOf(Math.random()*1000+"").toString().substring(0,2);
         total_fee = order.getTotalAmount().intValue()+"";
@@ -313,6 +317,7 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
             String postForObject = rest.postForObject(new URI(UNIFIEDORDER_URL), mapToXml, String.class);
             System.out.println("***postForObject:"+postForObject);
 
+
             //支付成功，待消费状态
             if (postForObject.indexOf("SUCCESS") != -1) {
                 Map<String, String> map = PaymentKit.xmlToMap(postForObject);
@@ -322,6 +327,10 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
                 //支付失败
                 order.setStatus("3");
             }
+            System.out.println("===============================================3 prepay_id =============================================================");
+            System.out.println("================== prepay_id = "+prepay_id );
+            System.out.println("===============================================3 prepay_id =============================================================");
+
 
             //保存订单
             order.setTradeNo(order.getId());
@@ -386,8 +395,6 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
     @ResponseBody
     @RequestMapping("/pay_notify.do")
     public String notifyUrl(HttpServletRequest request,HttpServletResponse response){
-
-
         System.out.println("**WxPayController.notifyUrl()");
         Map<String, Object> retMap = new HashMap<String, Object>();
         retMap.put("code", 200);
@@ -417,9 +424,6 @@ public class WXJSAPIPayController extends AppotBaseController {// 公众号id
                 }
             }
 
-            System.out.println("===============================================5 微信异步回调通知 =============================================================");
-            System.out.println("================== notifyMap = "+notifyMap);
-            System.out.println("===============================================5 微信异步回调通知 =============================================================");
 
             order.setPayStatus(notifyMap.get("result_code"));
             order.setPayUpdatetime(new Date());
