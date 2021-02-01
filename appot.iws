@@ -20,75 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="1 新增微信小程序支付功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/BaseInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/Pagination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/DailyVenuesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Timeqj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/images/etr_02.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/images/lkre_02.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399979435221.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399979444343.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399985611698.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-161101140S9291-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-191119150Gc57-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-191119155AS45-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F2231K6293G-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101J413119-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101J559330-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101K926227-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101KI1319-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121219153Y41-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121219422L55-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012121T343204-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-201213150F94N-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012131529325S-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-201213164214C2-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012152044264W-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121521022E40-lp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/21.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/banner01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/core.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/h.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/hm.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/jquery.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/kefu.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/liucheng.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo - 副本.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/pa.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/z_stat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/zzsc.js.下载" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appot.iws" beforeDir="false" afterPath="$PROJECT_DIR$/appot.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/util/GPSSUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/util/GPSSUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/MyMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/MyMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/AppotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/AppotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXXCXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXXCXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindOrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindVenueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindVenueDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Body.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/BookPriceInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/BookPriceInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/SiteInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/SiteInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/static/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/static/logo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -565,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609029709189</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1 新增微信小程序支付功能">
+      <created>1612193863771</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1612193863771</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -732,11 +671,11 @@
     </state>
     <state x="263" y="47" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607337664598" />
     <state x="461" y="164" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447944713" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609029711098">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612193666030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1609029711098" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543424588" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612193666030" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1610603066387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
