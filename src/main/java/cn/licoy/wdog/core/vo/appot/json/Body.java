@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "isConfirm",
     "etime",
     "bill",
-    "stime"
+    "stime", "timeqj"
 })
 public class Body {
 
@@ -35,6 +35,8 @@ public class Body {
     private List<SiteInfo> siteInfos = new ArrayList<SiteInfo>();
     @JsonProperty("productId")
     private Integer productId;
+    @JsonProperty("venueNo")
+    private Integer venueNo;
     @JsonProperty("isConfirm")
     private Integer isConfirm;
     @JsonProperty("etime")
@@ -45,6 +47,8 @@ public class Body {
     private String stime;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonProperty("timeqj")
+    private List<Timeqj> timeqj = new ArrayList<Timeqj>();
 
     @JsonProperty("minHour")
     public Integer getMinHour() {
@@ -96,6 +100,16 @@ public class Body {
         this.productId = productId;
     }
 
+    @JsonProperty("venueNo")
+    public Integer getVenueNo() {
+        return venueNo;
+    }
+
+    @JsonProperty("venueNo")
+    public void settVenueNo(Integer venueNo) {
+        this.venueNo = venueNo;
+    }
+
     @JsonProperty("isConfirm")
     public Integer getIsConfirm() {
         return isConfirm;
@@ -144,6 +158,16 @@ public class Body {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("timeqj")
+    public List<Timeqj> getTimeqj() {
+        return timeqj;
+    }
+
+    @JsonProperty("timeqj")
+    public void setTimeqj(List<Timeqj> timeqj) {
+        this.timeqj = timeqj;
     }
 
     @Override

@@ -49,16 +49,7 @@ server:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/xml,text/plain
     min-response-size: 1024
-  port: 443
-  ssl:
-    # SSL 证书路径，classpath 必不可少
-    key-store: classpath:yushangcc.com.jks
-    # SSL 证书密码
-    key-store-password: zhongjil11
-    # 证书类型
-    key-store-type: JKS
-    # 证书别名
-    key-alias: yushangcc.com
+  port: 80
   maxHttpHeaderSize: 10240000
   maxHttpPostSize: 10240000
   tomcat:
@@ -67,6 +58,6 @@ server:
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
 resources: # 指定静态资源的路径
-  static-locations: classpath:/static/,classpath:/views/,classpath:/staticc/
+  static-locations: classpath:/static/,classpath:/views/,classpath:/staticc/,classpath:/yushangweb/
   cache-period: 0
 

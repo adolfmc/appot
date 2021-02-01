@@ -27,7 +27,7 @@ public class GPSSUtils {
      * @param lat1 点1纬度
      * @param lng2 点2经度
      * @param lat2 点2纬度
-     * @return 距离，单位千米(KM)
+     * @return 距离，单位米(M)
      * @see <a href="https://zh.wikipedia.org/wiki/%E5%8D%8A%E6%AD%A3%E7%9F%A2%E5%85%AC%E5%BC%8F">半正矢(Haversine)公式</a>
      */
     public static double getDistanceFrom2LngLat(double lng1, double lat1, double lng2, double lat2) {
@@ -44,6 +44,6 @@ public class GPSSUtils {
     }
 
     public static void main(String[] args){
-        System.out.println(  getDistanceFrom2LngLat( 121.515244,31.181736,121.534218,31.195534) );
+        System.out.println(  getDistanceFrom2LngLat( 121.537563,31.194291,121.52771300,31.18957200) );
     }
 }

@@ -22,7 +22,7 @@ public class SiteInfo {
     @JsonProperty("bookPriceInfos")
     private List<BookPriceInfo> bookPriceInfos = new ArrayList<BookPriceInfo>();
     @JsonProperty("siteNo")
-    private Integer siteNo;
+    private String siteNo;
     @JsonProperty("siteName")
     private String siteName;
     @JsonIgnore
@@ -39,12 +39,12 @@ public class SiteInfo {
     }
 
     @JsonProperty("siteNo")
-    public Integer getSiteNo() {
+    public String getSiteNo() {
         return siteNo;
     }
 
     @JsonProperty("siteNo")
-    public void setSiteNo(Integer siteNo) {
+    public void setSiteNo(String siteNo) {
         this.siteNo = siteNo;
     }
 

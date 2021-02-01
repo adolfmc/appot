@@ -19,15 +19,76 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="1 添加user 页面">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXXCXController.java" afterDir="false" />
+    <list default="true" id="2b6a8646-859b-4936-8f4e-a74335771b41" name="Default Changelist" comment="1 新增微信小程序支付功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/BaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/Pagination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/DailyVenuesDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Timeqj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/images/etr_02.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/images/lkre_02.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399979435221.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399979444343.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/1399985611698.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-161101140S9291-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-191119150Gc57-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-191119155AS45-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F2231K6293G-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101J413119-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101J559330-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101K926227-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-1F4101KI1319-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121219153Y41-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121219422L55-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012121T343204-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-201213150F94N-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012131529325S-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-201213164214C2-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-2012152044264W-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/2-20121521022E40-lp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/banner01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/core.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/h.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/hm.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/jquery.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/kefu.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/liucheng.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo - 副本.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/logo.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/pa.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/ser_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/youshi4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/z_stat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/yushangweb/index_files/zzsc.js.下载" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appot.iws" beforeDir="false" afterPath="$PROJECT_DIR$/appot.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/controller/AppotBaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/util/GPSSUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/common/util/GPSSUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/MyMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/MyMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/AppotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/AppotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXH5PayController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXJSAPIPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXJSAPIPayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/appot/VenueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXXCXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/controller/wxpay/WXXCXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindOrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindVenueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/dto/appot/FindVenueDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/entity/appot/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/service/appot/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/BookPriceInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/BookPriceInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/SiteInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/licoy/wdog/core/vo/appot/json/SiteInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/static/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/static/logo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,18 +334,23 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/yushangweb" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.startup.StartupConfigurable" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="cn.licoy.wdog.core.dto.appot" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.licoy.wdog.core.dto.appot" />
       <recent name="cn.licoy.wdog.core.controller.wxpay" />
       <recent name="cn.licoy.wdog.core.controller.appot" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\appot\src\main\resources\yushangweb" />
       <recent name="C:\Users\Administrator\IdeaProjects\appot\src\main\resources" />
       <recent name="C:\Users\Administrator\IdeaProjects\appot\src\main\java\cn\licoy\wdog\common\util" />
       <recent name="C:\Users\Administrator\IdeaProjects\appot" />
@@ -315,8 +381,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpTools" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.licoy.wdog.common.util.HttpTools" />
+    <configuration name="GPSSUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.licoy.wdog.common.util.GPSSUtils" />
       <module name="appot" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -391,10 +457,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.WatchDogApplication" />
+        <item itemvalue="Application.GPSSUtils" />
         <item itemvalue="Application.Encrypt" />
         <item itemvalue="Application.RestTemplateTest2" />
         <item itemvalue="Application.RestTemplateTest" />
-        <item itemvalue="Application.HttpTools" />
       </list>
     </recent_temporary>
   </component>
@@ -492,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605597993544</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="1 新增微信小程序支付功能">
+      <created>1609029709189</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609029709189</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +588,8 @@
     <MESSAGE value="前端页面升级V1.0.1(html 拆分成多个模块页面）" />
     <MESSAGE value="1修复订单列表支付跳转&#10;2订单添加加入venuename" />
     <MESSAGE value="1 添加user 页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="1 添加user 页面" />
+    <MESSAGE value="1 新增微信小程序支付功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 新增微信小程序支付功能" />
   </component>
   <component name="VssConfiguration">
     <CheckoutOptions>
@@ -578,22 +652,23 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="673" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1608856941686" />
-    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1608637339372">
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1609822762499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1608637339372" />
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1609822762499" />
     <state x="667" y="266" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1606743706223">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="266" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606743706223" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608866343202">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610602965913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608866343202" />
-    <state width="1144" height="466" key="DebuggerActiveHint" timestamp="1608607148353">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610602965913" />
+    <state width="1144" height="838" key="DebuggerActiveHint" timestamp="1609833463162">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1144" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1608607148353" />
+    <state width="1144" height="838" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1609833463162" />
     <state width="444" height="466" key="DebuggerActiveHint/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605454361601" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1606983843537">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -603,80 +678,88 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607991993179" />
-    <state width="1877" height="480" key="GridCell.Tab.0.bottom" timestamp="1608821367698">
+    <state width="1705" height="444" key="GridCell.Tab.0.bottom" timestamp="1612014253948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367698" />
-    <state width="1877" height="431" key="GridCell.Tab.0.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
-    <state width="1877" height="480" key="GridCell.Tab.0.center" timestamp="1608821367698">
+    <state width="1706" height="445" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712957" />
+    <state width="1705" height="444" key="GridCell.Tab.0.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612014253948" />
+    <state width="1705" height="444" key="GridCell.Tab.0.center" timestamp="1612014253948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367698" />
-    <state width="1877" height="431" key="GridCell.Tab.0.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
-    <state width="1877" height="480" key="GridCell.Tab.0.left" timestamp="1608821367698">
+    <state width="1706" height="445" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712957" />
+    <state width="1705" height="444" key="GridCell.Tab.0.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612014253948" />
+    <state width="1705" height="444" key="GridCell.Tab.0.left" timestamp="1612014253948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367698" />
-    <state width="1877" height="431" key="GridCell.Tab.0.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
-    <state width="1877" height="480" key="GridCell.Tab.0.right" timestamp="1608821367698">
+    <state width="1706" height="445" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712957" />
+    <state width="1705" height="444" key="GridCell.Tab.0.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612014253948" />
+    <state width="1705" height="444" key="GridCell.Tab.0.right" timestamp="1612014253948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367698" />
-    <state width="1877" height="431" key="GridCell.Tab.0.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543587849" />
-    <state width="1877" height="480" key="GridCell.Tab.1.bottom" timestamp="1608821367468">
+    <state width="1706" height="445" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712957" />
+    <state width="1705" height="444" key="GridCell.Tab.0.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612014253948" />
+    <state width="1706" height="445" key="GridCell.Tab.1.bottom" timestamp="1611916712958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367468" />
-    <state width="1877" height="323" key="GridCell.Tab.1.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487644896" />
-    <state width="1877" height="480" key="GridCell.Tab.1.center" timestamp="1608821367468">
+    <state width="1706" height="445" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712958" />
+    <state width="1710" height="309" key="GridCell.Tab.1.bottom/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1611375956509" />
+    <state width="1706" height="445" key="GridCell.Tab.1.center" timestamp="1611916712958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367468" />
-    <state width="1877" height="323" key="GridCell.Tab.1.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487644896" />
-    <state width="1877" height="480" key="GridCell.Tab.1.left" timestamp="1608821367468">
+    <state width="1706" height="445" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712958" />
+    <state width="1710" height="309" key="GridCell.Tab.1.center/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1611375956508" />
+    <state width="1706" height="445" key="GridCell.Tab.1.left" timestamp="1611916712957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367468" />
-    <state width="1877" height="323" key="GridCell.Tab.1.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487644896" />
-    <state width="1877" height="480" key="GridCell.Tab.1.right" timestamp="1608821367468">
+    <state width="1706" height="445" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712957" />
+    <state width="1710" height="309" key="GridCell.Tab.1.left/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1611375956508" />
+    <state width="1706" height="445" key="GridCell.Tab.1.right" timestamp="1611916712958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="480" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608821367468" />
-    <state width="1877" height="323" key="GridCell.Tab.1.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605487644896" />
+    <state width="1706" height="445" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611916712958" />
+    <state width="1710" height="309" key="GridCell.Tab.1.right/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1611375956508" />
     <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1605543508016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="595" y="280" key="MultipleFileMergeDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543508016" />
-    <state x="690" y="221" key="RollbackChangesDialog" timestamp="1605447366829">
+    <state x="690" y="221" key="RollbackChangesDialog" timestamp="1609296192797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="690" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609296192797" />
     <state x="690" y="221" key="RollbackChangesDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447366829" />
     <state x="263" y="47" key="SettingsEditor" timestamp="1607337664598">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="263" y="47" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607337664598" />
     <state x="461" y="164" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605447944713" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605543424588">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609029711098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1609029711098" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605543424588" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609029562356">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1610603066387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609029562356" />
-    <state x="670" y="77" width="1035" height="915" key="find.popup" timestamp="1608859567103">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609030060033" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610603066387" />
+    <state x="753" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609823283082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="670" y="77" width="1035" height="915" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608859567103" />
+    <state x="753" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1609823283082" />
+    <state x="670" y="77" width="1035" height="915" key="find.popup" timestamp="1609823163056">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="670" y="77" width="1035" height="915" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609823163056" />
     <state x="662" y="252" width="596" height="536" key="find.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605453751233" />
     <state x="334" y="130" key="new project wizard" timestamp="1608564276322">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1608564276322" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608044700227">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1610603777909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608044700227" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609823527102" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610603777909" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -234,6 +234,7 @@ public class WXXCXController extends AppotBaseController {// 公众号id
      * @throws Exception
      */
     @RequestMapping("pay.do")
+    @ResponseBody
     public ResponseResult order( HttpServletRequest request, HttpServletResponse response, String code , ModelMap retMap,String order_id,String mobile) throws  Exception{
         System.out.println("================== mobile = "+mobile);
         System.out.println("===============================================1 code =============================================================");
@@ -262,7 +263,7 @@ public class WXXCXController extends AppotBaseController {// 公众号id
         jsonStr = JsonUtils.toJson(packageParams);
         System.out.println(jsonStr);
 
-        System.out.println("===============================================4 JSAPI调起支付 =============================================================");
+        System.out.println("===============================================4 JSAPI调起支付E =============================================================");
         System.out.println("================== jsonStr = "+jsonStr);
         System.out.println("===============================================4 JSAPI调起支付 =============================================================");
 

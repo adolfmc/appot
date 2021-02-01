@@ -18,11 +18,19 @@ import java.io.IOException;
 @RequestMapping(value = {"/"})
 @Api(tags = {"home"})
 public class IndexController extends AppotBaseController {
+    @RequestMapping(value ="",method = {RequestMethod.POST, RequestMethod.GET})
+    public void index(HttpServletRequest request, HttpServletResponse response){
+        try {
+            response.sendRedirect(base_url+"/yushangweb/index.html");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 微信H5 支付--------------------好使
      * 注意：必须再web页面中发起支付且域名已添加到开发配置中
      */
-    @RequestMapping(value ="",method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value ="appot.html",method = {RequestMethod.POST, RequestMethod.GET})
     public void wapPay(HttpServletRequest request, HttpServletResponse response){
         try {
             response.sendRedirect(base_url+"/static/index.html");

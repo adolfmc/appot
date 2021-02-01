@@ -5,8 +5,10 @@ import com.alibaba.fastjson.JSONObject;
 import org.crazycake.shiro.RedisManager;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +21,7 @@ import java.nio.charset.Charset;
 import java.rmi.server.ExportException;
 import java.util.*;
 
-public class AppotBaseController {
-    public String base_url = "https://www.yushangcc.com";
-
-
+public class AppotBaseController extends BaseInfo {
     @Autowired
     public JdbcTemplate jdbcTemplate;
 
@@ -174,7 +173,22 @@ public class AppotBaseController {
             int number=random.nextInt(62);
             sb.append(str.charAt(number));
         }
+
         return sb.toString().toUpperCase();
+    }
+
+
+    public Pagination getPagination(String sql ,int currentPage,int pageSize, RowMapper rowMapper){
+        Pagination pagination = new Pagination(sql,currentPage,10,jdbcTemplate ,rowMapper);
+        return pagination;
+    }
+
+    public String appendSqlIN(String[] values){
+        StringBuffer sql = new StringBuffer();
+        for (String v:values){
+            sql.append("'"+v+"',");
+        }
+        return "("+sql.toString().substring(0,sql.toString().length()-1)+")";
     }
 
 }

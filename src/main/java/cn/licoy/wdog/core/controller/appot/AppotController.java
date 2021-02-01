@@ -118,23 +118,14 @@ public class AppotController extends AppotBaseController {
 
     @RequestMapping(value = {"/pyDCYumaoqiu"})
     @ResponseBody
-    public ExampleClass pyDCYumaoqiu(HttpServletRequest request, HttpServletResponse response,String datee,String venue_id,String siteId,String sports_type){
+    public ExampleClass pyDCYumaoqiu(HttpServletRequest request, HttpServletResponse response, String datee, String venue_id, String siteId, String sports_type){
         ExampleClass exampleClass =null;
         try {
-            String resultjson = HttpTools.doGet("http://www.yushangcc.com:8010/getInfoByDateFromDCYumaoqiu?datee="+datee);
+            String resultjson = HttpTools.doGet(py_base_url+"/getInfoByDateFromDCYumaoqiu?datee="+datee+"&venue_id="+venue_id);
             exampleClass =  JSONObject.parseObject(resultjson,ExampleClass.class);
 
             for (SiteInfo siteInfo :exampleClass.getBody().getSiteInfos() ){
-                //补齐时间差（DC羽毛球过去时间没有记录，含当前小时），
                 ArrayList<BookPriceInfo>  bi1 = new ArrayList<BookPriceInfo>();
-
-                String pystartTime = siteInfo.getBookPriceInfos().get(0).getBeginTime();
-                int currtime = Integer.valueOf(pystartTime.substring(11,13)) ;
-                for (int i=8;i<currtime;i++){
-                    BookPriceInfo bookPriceInfo1 = new BookPriceInfo();
-                    bookPriceInfo1.setBookStatus(0);
-                    bi1.add(bookPriceInfo1);
-                }
 
                 //采集回来的数据
                 for (BookPriceInfo bookPriceInfo :siteInfo.getBookPriceInfos() ){
@@ -194,7 +185,6 @@ public class AppotController extends AppotBaseController {
                 bookPriceInfo.setBeginTime(datee +" "+ dd +":00");
 
 
-
                 Object fee=ReflectionKit.getMethodValue( venueFee,"t"+dd);
                 Double feeb = null;
                 try{
@@ -213,7 +203,7 @@ public class AppotController extends AppotBaseController {
 
 
             siteInfo.setBookPriceInfos(bookPriceInfos);
-            siteInfo.setSiteNo( Integer.valueOf( venueFee.getSiteNo()) );
+            siteInfo.setSiteNo( venueFee.getSiteNo());
             siteInfo.setSiteName(venueFee.getSiteName());
             siteInfos.add(siteInfo);
         }

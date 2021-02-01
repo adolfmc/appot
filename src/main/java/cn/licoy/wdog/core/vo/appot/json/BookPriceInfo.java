@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "salePrice",
     "beginTime",
     "endTime",
-    "isGroup"
+    "isGroup",
+    "xq",
+    "goodsId"
 })
 public class BookPriceInfo implements Cloneable{
 
@@ -29,6 +31,11 @@ public class BookPriceInfo implements Cloneable{
     private String endTime;
     @JsonProperty("isGroup")
     private Integer isGroup;
+    @JsonProperty("xq")
+    private String xq;
+    @JsonProperty("goodsId")
+    private String goodsId;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -61,6 +68,27 @@ public class BookPriceInfo implements Cloneable{
     public void setBeginTime(String beginTime) {
         this.beginTime = beginTime;
     }
+
+    @JsonProperty("xq")
+    public String getXq() {
+        return xq;
+    }
+
+    @JsonProperty("xq")
+    public void setXq(String xq) {
+        this.xq = xq;
+    }
+
+    @JsonProperty("goodsId")
+    public String getGoodsId() {
+        return goodsId;
+    }
+
+    @JsonProperty("goodsId")
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
+    }
+
 
     @JsonProperty("endTime")
     public String getEndTime() {
