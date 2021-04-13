@@ -26,6 +26,7 @@
     </properties>
 
     <dependencies>
+
         <!-- 腾讯短信 -->
         <dependency>
             <groupId>com.tencentcloudapi</groupId>

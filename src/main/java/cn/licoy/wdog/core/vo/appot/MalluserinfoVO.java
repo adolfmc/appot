@@ -1,0 +1,1 @@
+package cn.licoy.wdog.core.vo.appot;import lombok.Data;import java.util.Date;import com.fasterxml.jackson.annotation.JsonFormat;/** * @author mc * @version Mon Apr 12 01:16:55 2021 */@Datapublic class MalluserinfoVO{   private String id;   private String mobile;   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")   private Date createDate;}
